@@ -153,7 +153,7 @@ export default function Testimonials({
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
-      className="relative overflow-hidden rounded-3xl border border-navy-100 bg-gradient-to-b from-surface-muted/80 via-white to-surface-muted/50 py-10 px-4 sm:py-14 sm:px-8 lg:px-10 shadow-xs"
+      className="relative overflow-hidden rounded-3xl border border-white/40 bg-gradient-to-b from-white/60 via-surface-muted/40 to-white/50 py-10 px-4 sm:py-14 sm:px-8 lg:px-10 shadow-xs backdrop-blur-md"
       role="region"
       aria-label="Client testimonials carousel"
     >
@@ -243,10 +243,10 @@ export default function Testimonials({
                 className="w-[84vw] max-w-[340px] sm:w-[380px] lg:w-[410px] shrink-0"
               >
                 <div
-                  className={`group relative flex h-full flex-col justify-between rounded-3xl border bg-white p-6 sm:p-8 transition-all duration-300 ${
+                  className={`group relative flex h-full flex-col justify-between rounded-3xl border border-white/50 bg-white/75 p-6 sm:p-8 backdrop-blur-md transition-all duration-300 ${
                     isCurrent
                       ? "border-orange-400 shadow-xl shadow-orange-500/5 ring-2 ring-orange-500/15"
-                      : "border-navy-100 shadow-sm hover:border-orange-200 hover:shadow-md"
+                      : "border-navy-100/60 shadow-sm hover:border-orange-200 hover:shadow-md"
                   }`}
                 >
                   {/* Card Header: Metric Badge + Stars */}

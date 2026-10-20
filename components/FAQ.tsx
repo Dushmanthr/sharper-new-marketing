@@ -14,7 +14,7 @@ export default function FAQ({ items }: { items: FaqItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <div className="mx-auto max-w-3xl divide-y divide-navy-100 rounded-3xl border border-navy-100 bg-white shadow-xs">
+    <div className="mx-auto max-w-3xl divide-y divide-navy-100/50 rounded-3xl border border-white/50 bg-white/75 shadow-md backdrop-blur-md">
       {items.map((item, i) => {
         const isOpen = open === i;
         const panelId = `faq-panel-${i}`;

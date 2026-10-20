@@ -21,7 +21,7 @@ export default function CaseStudyCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="group flex flex-col overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      className="group flex flex-col overflow-hidden rounded-3xl border border-white/50 bg-white/75 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/85 hover:shadow-xl"
     >
       {/* Visual Header / Metric Highlight */}
       <div className="relative aspect-16/9 w-full overflow-hidden bg-navy-950">

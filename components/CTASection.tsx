@@ -13,7 +13,7 @@ export default function CTASection({ title, description }: CTASectionProps) {
   return (
     <section className="py-16 sm:py-20">
       <div className="container-page">
-        <Reveal className="overflow-hidden rounded-3xl bg-navy-950 px-6 py-12 text-center text-white shadow-2xl sm:px-12 sm:py-16 border border-navy-800">
+        <Reveal className="overflow-hidden rounded-3xl border border-white/15 bg-navy-950/70 px-6 py-12 text-center text-white shadow-2xl backdrop-blur-md sm:px-12 sm:py-16">
           <h2 className="mx-auto max-w-2xl font-display text-2xl font-bold leading-tight sm:text-3xl">
             {title ?? (
               <>

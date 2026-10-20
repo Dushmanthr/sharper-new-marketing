@@ -77,7 +77,7 @@ export default function ServicesExplorer() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -15 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-xl"
+          className="overflow-hidden rounded-3xl border border-white/50 bg-white/75 shadow-xl backdrop-blur-md"
         >
           <div className="grid lg:grid-cols-12">
             {/* Left Column: Hook, Lead, What We Do */}
@@ -106,7 +106,7 @@ export default function ServicesExplorer() {
                   {activeService.whatWeDo.map((item, idx) => (
                     <div
                       key={idx}
-                      className="rounded-2xl border border-navy-50 bg-surface-muted/60 p-4 transition-all hover:border-orange-200 hover:bg-orange-50/30"
+                      className="rounded-2xl border border-navy-100/40 bg-white/50 p-4 backdrop-blur-xs transition-all hover:border-orange-200 hover:bg-orange-50/40"
                     >
                       <h5 className="font-display text-sm font-semibold text-navy-900">
                         {item.title}
@@ -148,7 +148,7 @@ export default function ServicesExplorer() {
             </div>
 
             {/* Right Column: Approach & What You Can Expect */}
-            <div className="border-t border-navy-100 bg-navy-900 p-8 text-white lg:col-span-5 lg:border-t-0 lg:border-l lg:p-12">
+            <div className="border-t border-navy-800/50 bg-navy-900/80 p-8 text-white backdrop-blur-md lg:col-span-5 lg:border-t-0 lg:border-l lg:p-12">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xs">
                 <span className="text-xs font-semibold uppercase tracking-wider text-orange-400">
                   Our Approach

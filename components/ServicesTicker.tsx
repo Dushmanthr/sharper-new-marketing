@@ -31,7 +31,7 @@ export default function ServicesTicker() {
   return (
     <section
       aria-label="Core Marketing Services Ticker"
-      className="relative z-20 w-full overflow-hidden border-y border-white/10 bg-navy-950 py-3 sm:py-4 select-none"
+      className="relative z-20 w-full overflow-hidden border-y border-white/10 bg-navy-950/60 backdrop-blur-md py-3 sm:py-4 select-none"
     >
       {/* Top subtle orange highlight rule */}
       <div

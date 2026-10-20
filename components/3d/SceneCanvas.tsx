@@ -25,20 +25,20 @@ export default function SceneCanvas() {
         dpr={[1, 2]}
       >
         {/* Soft base ambient illumination */}
-        <ambientLight intensity={0.7} />
+        <ambientLight intensity={0.9} />
 
         {/* Studio Key Light */}
-        <directionalLight position={[6, 9, 8]} intensity={2.2} color="#ffffff" />
+        <directionalLight position={[6, 9, 8]} intensity={2.8} color="#ffffff" />
 
         {/* Dynamic Dual Rim-Lights highlighting brand orange & cyan facets */}
         <directionalLight
           position={[-10, 8, -6]}
-          intensity={3.2}
+          intensity={3.8}
           color="#00e5ff" // Electric Cyan edge illumination
         />
         <directionalLight
           position={[10, -8, -6]}
-          intensity={2.8}
+          intensity={3.4}
           color="#ff7b00" // Vibrant Orange edge illumination
         />
 

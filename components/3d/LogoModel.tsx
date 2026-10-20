@@ -391,8 +391,8 @@ export default function LogoModel() {
 
   // Viewport-based responsive scale & layout calculations
   const isMobile = size.width < 768;
-  const baseScale = Math.min(viewport.width / 13, 0.028) * (isMobile ? 0.72 : 1);
-  const maxX = isMobile ? Math.min(viewport.width * 0.22, 0.8) : 2.2;
+  const baseScale = Math.min(viewport.width / 11, 0.033) * (isMobile ? 0.76 : 1);
+  const maxX = isMobile ? Math.min(viewport.width * 0.22, 0.8) : 2.4;
 
   // Single continuous ScrollTrigger tracking scroll progress & kinetic velocity without dead zones
   useEffect(() => {
@@ -517,14 +517,16 @@ export default function LogoModel() {
     <group ref={meshGroupRef}>
       {parts.map((part) => (
         <mesh key={part.id} geometry={part.geometry}>
-          {/* Exact brand color physical material with metallic clearcoat sheen */}
+          {/* Exact brand color physical material with metallic clearcoat sheen and emissive depth */}
           <meshPhysicalMaterial
             color={part.color}
+            emissive={part.color}
+            emissiveIntensity={0.22}
             metalness={part.metalness}
             roughness={part.roughness}
             clearcoat={part.clearcoat}
             clearcoatRoughness={part.clearcoatRoughness}
-            reflectivity={0.92}
+            reflectivity={0.96}
             side={THREE.DoubleSide}
           />
         </mesh>

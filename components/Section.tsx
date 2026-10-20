@@ -74,9 +74,9 @@ export default function Section({
       id={id}
       className={clsx(
         "py-16 sm:py-20 lg:py-24 transition-colors",
-        tone === "white" && "bg-white/85 backdrop-blur-xs",
-        tone === "muted" && "bg-surface-muted/80 backdrop-blur-xs",
-        tone === "navy" && "bg-navy-950/85 text-white backdrop-blur-xs",
+        tone === "white" && "bg-white/40 backdrop-blur-md",
+        tone === "muted" && "bg-surface-muted/35 backdrop-blur-md",
+        tone === "navy" && "bg-navy-950/45 text-white backdrop-blur-md",
         className,
       )}
     >

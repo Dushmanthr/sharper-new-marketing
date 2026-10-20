@@ -239,9 +239,9 @@ export default function Home() {
       <ServicesTicker />
 
       {/* 02. Recommended Supporting Section: Rotates 180° on Y, moves slightly right */}
-      <section id="section-2" className="border-b border-navy-100 bg-surface-muted/90 backdrop-blur-xs py-12 sm:py-16">
+      <section id="section-2" className="border-b border-navy-100/50 bg-surface-muted/30 backdrop-blur-md py-12 sm:py-16">
         <div className="container-page">
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-4xl text-center rounded-3xl border border-white/50 bg-white/60 p-8 sm:p-12 shadow-lg backdrop-blur-md">
             <Reveal>
               <span className="kicker justify-center text-orange-600">
                 UK Heritage · Global Reach
@@ -275,17 +275,19 @@ export default function Home() {
 
       {/* 03. Homepage Message: Turn Your Digital Presence into Business Growth */}
       <Section tone="white">
-        <SectionHeading
-          kicker="How We Help Your Business"
-          title="Turn Your Digital Presence into Business Growth"
-          description="Your digital marketing should do more than make your business visible. It should help you attract the right customers, build trust, generate enquiries, and support long-term growth. We combine strategic planning, creative execution, and data-led optimisation aligned with your business objectives."
-        />
+        <div className="mx-auto max-w-3xl rounded-3xl border border-white/50 bg-white/60 p-6 sm:p-8 backdrop-blur-md shadow-sm">
+          <SectionHeading
+            kicker="How We Help Your Business"
+            title="Turn Your Digital Presence into Business Growth"
+            description="Your digital marketing should do more than make your business visible. It should help you attract the right customers, build trust, generate enquiries, and support long-term growth. We combine strategic planning, creative execution, and data-led optimisation aligned with your business objectives."
+          />
+        </div>
 
         {/* 5-Benefit Pillars */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {howWeHelp.map((item, i) => (
             <Reveal key={item.title} index={i} className="h-full">
-              <div className="group flex h-full flex-col rounded-3xl border border-navy-100 bg-white p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg">
+              <div className="group flex h-full flex-col rounded-3xl border border-white/60 bg-white/70 p-7 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:bg-white/85 hover:shadow-lg">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-600 transition-colors group-hover:bg-orange-500 group-hover:text-white">
                   <item.icon className="h-6 w-6" />
                 </span>
@@ -301,7 +303,7 @@ export default function Home() {
 
           {/* 6th Card: A Clear Process. A Shared Goal. */}
           <Reveal index={5} className="h-full">
-            <div className="flex h-full flex-col justify-between rounded-3xl border border-navy-800 bg-navy-900 p-7 text-white shadow-md">
+            <div className="flex h-full flex-col justify-between rounded-3xl border border-navy-700/60 bg-navy-900/80 p-7 text-white shadow-md backdrop-blur-md">
               <div>
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-orange-400">
                   <Sparkles className="h-3.5 w-3.5" /> A Clear Process
@@ -328,11 +330,13 @@ export default function Home() {
 
       {/* 04. Six Core Services — Tilts on X and Y, moves left */}
       <Section id="section-3" tone="muted">
-        <SectionHeading
-          kicker="Our Core Services"
-          title="Six Disciplines. Coordinated for Growth."
-          description="Click any service below to review what we deliver, how we approach the challenge, and the concrete outcomes you can expect for your business."
-        />
+        <div className="mx-auto max-w-3xl rounded-3xl border border-white/50 bg-white/60 p-6 sm:p-8 backdrop-blur-md shadow-sm">
+          <SectionHeading
+            kicker="Our Core Services"
+            title="Six Disciplines. Coordinated for Growth."
+            description="Click any service below to review what we deliver, how we approach the challenge, and the concrete outcomes you can expect for your business."
+          />
+        </div>
 
         <div className="mt-12">
           <ServicesExplorer />
@@ -348,16 +352,18 @@ export default function Home() {
 
       {/* 06. Why Partner with Sharper Labs Marketing? (Pages 3-4 of PDF) */}
       <Section tone="white">
-        <SectionHeading
-          kicker="Why Partner With Us?"
-          title="Marketing Built Around Your Business"
-          description="We combine strategic thinking with execution discipline. Here is how our approach delivers tangible commercial progress."
-        />
+        <div className="mx-auto max-w-3xl rounded-3xl border border-white/50 bg-white/60 p-6 sm:p-8 backdrop-blur-md shadow-sm">
+          <SectionHeading
+            kicker="Why Partner With Us?"
+            title="Marketing Built Around Your Business"
+            description="We combine strategic thinking with execution discipline. Here is how our approach delivers tangible commercial progress."
+          />
+        </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {whyPartnerPillars.map((p, i) => (
             <Reveal key={p.title} index={i} className="h-full">
-              <div className="flex h-full flex-col rounded-3xl border border-navy-100 bg-surface-muted/50 p-7 transition-all hover:bg-white hover:shadow-md">
+              <div className="flex h-full flex-col rounded-3xl border border-white/50 bg-white/65 p-7 backdrop-blur-md shadow-sm transition-all hover:bg-white/80 hover:shadow-md">
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy-900 text-orange-400">
                   <p.icon className="h-5 w-5" />
                 </span>
@@ -374,7 +380,7 @@ export default function Home() {
 
         {/* Our Commitment Banner */}
         <Reveal className="mt-12">
-          <div className="rounded-3xl border border-orange-200 bg-gradient-to-r from-orange-50 via-white to-orange-50 p-8 text-center sm:p-10">
+          <div className="rounded-3xl border border-orange-200/60 bg-gradient-to-r from-orange-50/80 via-white/80 to-orange-50/80 p-8 text-center sm:p-10 backdrop-blur-md shadow-sm">
             <span className="text-xs font-semibold uppercase tracking-wider text-orange-600">
               Our Core Commitment
             </span>
@@ -395,7 +401,7 @@ export default function Home() {
 
       {/* 07. Featured Case Studies (Management 5-Point Standard) */}
       <Section tone="muted">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 rounded-3xl border border-white/50 bg-white/60 p-6 sm:p-8 backdrop-blur-md shadow-sm">
           <div>
             <span className="kicker">Case Studies</span>
             <h2 className="mt-2 font-display text-3xl font-bold text-navy-900 sm:text-4xl">
@@ -440,12 +446,14 @@ export default function Home() {
 
       {/* 10. Frequently Asked Questions */}
       <Section tone="muted">
-        <SectionHeading
-          kicker="Questions"
-          title="Frequently Asked Questions"
-          description="Everything you need to know about working with a UK-based digital marketing consultancy."
-        />
-        <div className="mt-10">
+        <div className="mx-auto max-w-3xl rounded-3xl border border-white/50 bg-white/60 p-6 sm:p-8 backdrop-blur-md shadow-sm mb-10">
+          <SectionHeading
+            kicker="Questions"
+            title="Frequently Asked Questions"
+            description="Everything you need to know about working with a UK-based digital marketing consultancy."
+          />
+        </div>
+        <div>
           <FAQ items={homeFaqs} />
         </div>
       </Section>
@@ -500,7 +508,7 @@ export default function Home() {
             </div>
           </div>
 
-          <Reveal delay={0.1} className="rounded-3xl bg-white p-6 shadow-xl sm:p-8">
+          <Reveal delay={0.1} className="rounded-3xl border border-white/40 bg-white/85 p-6 shadow-2xl backdrop-blur-md sm:p-8">
             <EnquiryForm />
           </Reveal>
         </div>
