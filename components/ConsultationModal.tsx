@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
@@ -67,6 +67,8 @@ export default function ConsultationModal({
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   // Shared form fields
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -102,15 +104,38 @@ export default function ConsultationModal({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) onClose();
     };
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
+
+      // Stop background Lenis smooth scroll while modal is active
+      const win = typeof window !== "undefined" ? (window as any) : null;
+      if (win?.lenis && typeof win.lenis.stop === "function") {
+        win.lenis.stop();
+      }
     }
+
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
+
+      // Resume background Lenis smooth scroll when modal closes
+      const win = typeof window !== "undefined" ? (window as any) : null;
+      if (win?.lenis && typeof win.lenis.start === "function") {
+        win.lenis.start();
+      }
     };
   }, [isOpen, onClose]);
+
+  // Reset scroll position to top when modal opens or tab changes
+  useEffect(() => {
+    if (isOpen && scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
+  }, [isOpen, tab]);
 
   const toggleQuotationService = (slug: string) => {
     setSelectedServices((prev) =>
@@ -224,10 +249,28 @@ Notes / Competitors: ${notes || "None"}`;
     onClose();
   };
 
+  const handleModalContainerWheel = (e: React.WheelEvent) => {
+    e.stopPropagation();
+    // If the mouse wheel is triggered over the header or tabs (outside the scrollable body),
+    // forward the scroll to the form body so mouse wheel always scrolls the form anywhere inside the modal
+    if (scrollContainerRef.current && !scrollContainerRef.current.contains(e.target as Node)) {
+      scrollContainerRef.current.scrollTop += e.deltaY;
+    }
+  };
+
+  const handleBackdropWheel = (e: React.WheelEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8">
+        <div
+          data-lenis-prevent
+          onWheel={handleBackdropWheel}
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8"
+        >
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -240,11 +283,13 @@ Notes / Competitors: ${notes || "None"}`;
 
           {/* Modal Container */}
           <motion.div
+            data-lenis-prevent
+            onWheel={handleModalContainerWheel}
             initial={{ opacity: 0, scale: 0.96, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 16 }}
             transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
-            className="relative flex max-h-[92vh] sm:max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-navy-100 bg-white text-navy-900 shadow-2xl"
+            className="relative flex max-h-[92vh] sm:max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-navy-100 bg-white text-navy-900 shadow-2xl consultation-modal-scroll"
             role="dialog"
             aria-modal="true"
           >
@@ -322,7 +367,12 @@ Notes / Competitors: ${notes || "None"}`;
             </div>
 
             {/* Body */}
-            <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-5 sm:px-8 sm:py-6">
+            <div
+              ref={scrollContainerRef}
+              data-lenis-prevent
+              onWheel={(e) => e.stopPropagation()}
+              className="flex-1 overflow-y-auto overscroll-contain px-5 py-5 sm:px-8 sm:py-6"
+            >
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}

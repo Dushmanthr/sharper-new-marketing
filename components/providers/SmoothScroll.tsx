@@ -31,9 +31,20 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       gestureOrientation: "vertical",
       smoothWheel: true,
       touchMultiplier: 1.5,
+      prevent: (node) => {
+        return Boolean(
+          node.hasAttribute?.("data-lenis-prevent") ||
+          node.closest?.("[data-lenis-prevent]") ||
+          node.closest?.("[role='dialog']")
+        );
+      },
     });
 
     lenisRef.current = lenis;
+
+    if (typeof window !== "undefined") {
+      (window as any).lenis = lenis;
+    }
 
     // Direct binding: when Lenis scrolls, notify ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
@@ -54,6 +65,11 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       gsap.ticker.remove(tickerCallback);
       lenis.destroy();
       lenisRef.current = null;
+      if (typeof window !== "undefined") {
+        if ((window as any).lenis === lenis) {
+          (window as any).lenis = null;
+        }
+      }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
