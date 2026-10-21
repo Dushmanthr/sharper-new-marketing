@@ -175,7 +175,7 @@ export default function Home() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h1 className="mt-5 text-4xl font-bold leading-[1.12] sm:text-5xl lg:text-5xl tracking-tight">
+          <h1 className="mt-5 text-3xl font-bold leading-[1.14] sm:text-4xl lg:text-5xl tracking-tight">
             Digital Marketing That{" "}
             <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 bg-clip-text text-transparent drop-shadow-xs">
               Moves Your Business Forward
@@ -184,23 +184,23 @@ export default function Home() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="mt-5 text-base sm:text-lg leading-relaxed text-navy-100">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg leading-relaxed text-navy-100">
             Sharper Labs Marketing is a UK-based digital marketing consultancy helping
             businesses build stronger brands, reach the right audiences, and achieve sustainable
             growth across the UK and internationally.
           </p>
-          <p className="mt-3 text-sm text-navy-200/80 hidden sm:block">
+          <p className="mt-3 text-xs sm:text-sm text-navy-200/80 hidden sm:block">
             From brand strategy and website development to paid advertising, social media, data analysis, and SEO, we bring strategy, creativity, and performance measurement together to help businesses make smarter marketing decisions.
           </p>
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Button
               href="/services"
               variant="primary"
               size="lg"
-              className="shadow-[0_0_25px_rgba(244,123,32,0.35)] hover:shadow-[0_0_35px_rgba(244,123,32,0.5)]"
+              className="w-full sm:w-auto justify-center shadow-[0_0_25px_rgba(244,123,32,0.35)] hover:shadow-[0_0_35px_rgba(244,123,32,0.5)]"
             >
               Explore Our Services <ArrowRight className="h-4 w-4" />
             </Button>
@@ -209,7 +209,7 @@ export default function Home() {
               external
               variant="outline"
               size="lg"
-              className="border-white/20 bg-white/5 text-white backdrop-blur-md hover:bg-white/15 hover:border-white/30 shadow-md"
+              className="w-full sm:w-auto justify-center border-white/20 bg-white/5 text-white backdrop-blur-md hover:bg-white/15 hover:border-white/30 shadow-md"
             >
               <Phone className="h-4 w-4" /> {site.phoneIntl}
             </Button>
@@ -218,18 +218,18 @@ export default function Home() {
 
         {/* Live Trust Metrics — Frosted Glass Cards */}
         <Reveal delay={0.2}>
-          <div className="mt-10 grid grid-cols-3 gap-3 border-t border-white/10 pt-6">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-center backdrop-blur-md transition-all hover:bg-white/[0.08] hover:border-white/20">
-              <span className="font-display text-2xl font-bold text-white tracking-tight">6 Core</span>
-              <p className="text-[11px] text-navy-200 font-medium mt-0.5">Specialist Disciplines</p>
+          <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-2 sm:gap-3 border-t border-white/10 pt-5 sm:pt-6">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-3 text-center backdrop-blur-md transition-all hover:bg-white/[0.08] hover:border-white/20">
+              <span className="font-display text-lg sm:text-2xl font-bold text-white tracking-tight">6 Core</span>
+              <p className="text-[10px] sm:text-[11px] text-navy-200 font-medium mt-0.5">Specialist Disciplines</p>
             </div>
-            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.06] p-3 text-center backdrop-blur-md shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-all hover:bg-orange-500/[0.12] hover:border-orange-500/30">
-              <span className="font-display text-2xl font-bold text-orange-400 tracking-tight">+214%</span>
-              <p className="text-[11px] text-orange-200/80 font-medium mt-0.5">Peak Lead Uplift</p>
+            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.06] p-2.5 sm:p-3 text-center backdrop-blur-md shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-all hover:bg-orange-500/[0.12] hover:border-orange-500/30">
+              <span className="font-display text-lg sm:text-2xl font-bold text-orange-400 tracking-tight">+214%</span>
+              <p className="text-[10px] sm:text-[11px] text-orange-200/80 font-medium mt-0.5">Peak Lead Uplift</p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-center backdrop-blur-md transition-all hover:bg-white/[0.08] hover:border-white/20">
-              <span className="font-display text-2xl font-bold text-white tracking-tight">100%</span>
-              <p className="text-[11px] text-navy-200 font-medium mt-0.5">Evidence-Based ROI</p>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-3 text-center backdrop-blur-md transition-all hover:bg-white/[0.08] hover:border-white/20">
+              <span className="font-display text-lg sm:text-2xl font-bold text-white tracking-tight">100%</span>
+              <p className="text-[10px] sm:text-[11px] text-navy-200 font-medium mt-0.5">Evidence-Based ROI</p>
             </div>
           </div>
         </Reveal>
@@ -242,7 +242,7 @@ export default function Home() {
       {/* 02. Recommended Supporting Section: Rotates 180° on Y, moves slightly right */}
       <section id="section-2" className="border-b border-navy-100/50 bg-surface-muted/30 backdrop-blur-md py-12 sm:py-16">
         <div className="container-page">
-          <div className="mx-auto max-w-4xl text-center rounded-3xl border border-white/50 bg-white/60 p-8 sm:p-12 shadow-lg backdrop-blur-md">
+          <div className="mx-auto max-w-4xl text-center rounded-3xl border border-white/50 bg-white/60 p-6 sm:p-10 lg:p-12 shadow-lg backdrop-blur-md">
             <Reveal>
               <span className="kicker justify-center text-orange-600">
                 UK Heritage · Global Reach
@@ -250,22 +250,22 @@ export default function Home() {
               <h2 className="mt-3 font-display text-2xl font-bold text-navy-900 sm:text-3xl">
                 Local Expertise. Global Perspective.
               </h2>
-              <p className="mt-5 text-base sm:text-lg leading-relaxed text-ink-muted">
+              <p className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg leading-relaxed text-ink-muted">
                 Based in the UK and working with businesses across markets, Sharper Labs Marketing
                 combines strategic thinking with practical digital expertise. We help organisations
                 strengthen their online presence, connect with relevant audiences, and create
                 opportunities for growth.
               </p>
-              <p className="mt-3 text-sm text-ink-muted">
+              <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-ink-muted">
                 Our approach is tailored to each business, recognising that markets, customers, and
                 commercial goals differ.
               </p>
 
-              <div className="mt-8 flex flex-wrap justify-center gap-4">
-                <Button href="/contact" variant="primary">
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+                <Button href="/contact" variant="primary" className="w-full sm:w-auto justify-center">
                   Discuss Your Marketing Goals <ArrowRight className="h-4 w-4" />
                 </Button>
-                <Button href="/about" variant="outline">
+                <Button href="/about" variant="outline" className="w-full sm:w-auto justify-center">
                   Our Background & Ethos
                 </Button>
               </div>
@@ -386,19 +386,19 @@ export default function Home() {
         </div>
 
         {/* Our Commitment Banner */}
-        <Reveal className="mt-12">
-          <div className="rounded-3xl border border-orange-200/60 bg-gradient-to-r from-orange-50/80 via-white/80 to-orange-50/80 p-8 text-center sm:p-10 backdrop-blur-md shadow-sm">
+        <Reveal className="mt-8 sm:mt-12">
+          <div className="rounded-3xl border border-orange-200/60 bg-gradient-to-r from-orange-50/80 via-white/80 to-orange-50/80 p-6 sm:p-8 lg:p-10 text-center backdrop-blur-md shadow-sm">
             <span className="text-xs font-semibold uppercase tracking-wider text-orange-600">
               Our Core Commitment
             </span>
-            <p className="mt-2 font-display text-xl font-bold text-navy-900 sm:text-2xl">
+            <p className="mt-2 font-display text-lg sm:text-xl lg:text-2xl font-bold text-navy-900 leading-snug">
               &ldquo;A considered strategy, transparent communication, and a focus on measurable progress not empty promises.&rdquo;
             </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Button href="/contact" variant="primary">
+            <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3 w-full sm:w-auto">
+              <Button href="/contact" variant="primary" className="w-full sm:w-auto justify-center">
                 Book a Free Consultation
               </Button>
-              <Button href={site.phoneHref} external variant="outline">
+              <Button href={site.phoneHref} external variant="outline" className="w-full sm:w-auto justify-center">
                 Call {site.phoneIntl}
               </Button>
             </div>
@@ -408,18 +408,18 @@ export default function Home() {
 
       {/* 07. Featured Case Studies (Management 5-Point Standard) */}
       <Section tone="muted">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 rounded-3xl border border-white/50 bg-white/60 p-6 sm:p-8 backdrop-blur-md shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-12 rounded-3xl border border-white/50 bg-white/60 p-5 sm:p-8 backdrop-blur-md shadow-sm">
           <div>
             <span className="kicker">Case Studies</span>
-            <h2 className="mt-2 font-display text-3xl font-bold text-navy-900 sm:text-4xl">
+            <h2 className="mt-2 font-display text-2xl font-bold text-navy-900 sm:text-3xl lg:text-4xl">
               Verified Client Outcomes
             </h2>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
+            <p className="mt-2.5 sm:mt-3 max-w-xl text-xs sm:text-sm leading-relaxed text-ink-muted">
               Explore genuine examples showing our clients&apos; challenges, the strategic work delivered, and verified results achieved across the UK and internationally.
             </p>
           </div>
           <div className="mt-4 sm:mt-0">
-            <Button href="/case-studies" variant="secondary">
+            <Button href="/case-studies" variant="secondary" className="w-full sm:w-auto justify-center">
               View All Case Studies <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
@@ -438,8 +438,8 @@ export default function Home() {
           <p className="mx-auto mt-5 max-w-2xl text-navy-100 text-sm sm:text-base">
             Whether you are expanding locally in the UK or entering overseas markets, Sharper Labs Marketing connects your digital presence with commercial return.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href="/contact" variant="primary" size="lg">
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3 w-full sm:w-auto">
+            <Button href="/contact" variant="primary" size="lg" className="w-full sm:w-auto justify-center">
               Discuss Your Goals With Us <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
@@ -453,7 +453,7 @@ export default function Home() {
 
       {/* 10. Frequently Asked Questions */}
       <Section tone="muted">
-        <div className="mx-auto max-w-3xl rounded-3xl border border-white/50 bg-white/60 p-6 sm:p-8 backdrop-blur-md shadow-sm mb-10">
+        <div className="mx-auto max-w-3xl rounded-3xl border border-white/50 bg-white/60 p-5 sm:p-8 backdrop-blur-md shadow-sm mb-8 sm:mb-10">
           <SectionHeading
             kicker="Questions"
             title="Frequently Asked Questions"
@@ -467,7 +467,7 @@ export default function Home() {
 
       {/* 11. Consultation & Contact Form — Full 360° loop, centered & scaled up */}
       <Section id="contact" tone="navy">
-        <div className="grid items-start gap-10 lg:grid-cols-2">
+        <div className="grid items-start gap-8 lg:gap-10 lg:grid-cols-2">
           <div>
             <SectionHeading
               align="left"
@@ -476,7 +476,7 @@ export default function Home() {
               title="Ready to make your marketing work harder?"
               description="Book a free, no-obligation consultation to discuss your commercial ambitions and explore the right approach for your business."
             />
-            <div className="mt-8 space-y-4 text-sm text-navy-100">
+            <div className="mt-6 sm:mt-8 space-y-3.5 sm:space-y-4 text-sm text-navy-100">
               <p className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5 text-orange-400 shrink-0" />
                 <span>
@@ -497,7 +497,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xs">
+            <div className="mt-8 sm:mt-10 rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-xs">
               <span className="text-xs font-semibold uppercase tracking-wider text-orange-400">
                 UK Head Office & International Enquiries
               </span>
@@ -515,7 +515,7 @@ export default function Home() {
             </div>
           </div>
 
-          <Reveal delay={0.1} className="rounded-3xl border border-white/40 bg-white/85 p-6 shadow-2xl backdrop-blur-md sm:p-8">
+          <Reveal delay={0.1} className="rounded-3xl border border-white/40 bg-white/85 p-5 sm:p-8 shadow-2xl backdrop-blur-md">
             <EnquiryForm />
           </Reveal>
         </div>

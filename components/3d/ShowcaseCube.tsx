@@ -385,16 +385,16 @@ export default function ShowcaseCube({
   };
 
   return (
-    <div className={`relative flex flex-col items-center select-none ${className}`}>
+    <div className={`relative flex flex-col items-center select-none w-full px-2 sm:px-0 ${className}`}>
       {/* 3D Canvas Box */}
-      <div className="relative h-[340px] sm:h-[400px] w-full max-w-[480px] rounded-3xl border border-white/20 bg-gradient-to-b from-navy-950/70 via-navy-900/50 to-navy-950/80 shadow-2xl backdrop-blur-xl overflow-hidden cursor-grab active:cursor-grabbing">
+      <div className="relative h-[320px] sm:h-[400px] w-full max-w-[480px] rounded-3xl border border-white/20 bg-gradient-to-b from-navy-950/70 via-navy-900/50 to-navy-950/80 shadow-2xl backdrop-blur-xl overflow-hidden cursor-grab active:cursor-grabbing touch-none">
         {/* Decorative corner glows */}
         <div className="pointer-events-none absolute -top-12 -left-12 h-36 w-36 rounded-full bg-cyan-500/20 blur-2xl" />
         <div className="pointer-events-none absolute -bottom-12 -right-12 h-36 w-36 rounded-full bg-orange-500/20 blur-2xl" />
 
         {/* Top Hint Pill */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1 text-[11px] font-semibold text-white/90 backdrop-blur-md shadow-xs">
-          <Move3d className="h-3.5 w-3.5 text-cyan-400 animate-pulse" />
+        <div className="absolute top-3.5 sm:top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/15 bg-white/10 px-3 sm:px-3.5 py-1 text-[10px] sm:text-[11px] font-semibold text-white/90 backdrop-blur-md shadow-xs whitespace-nowrap">
+          <Move3d className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-cyan-400 animate-pulse" />
           <span>Interactive 3D Prism · Drag to Rotate</span>
         </div>
 
@@ -425,7 +425,7 @@ export default function ShowcaseCube({
       </div>
 
       {/* Quick Face Selector Navigation Tabs */}
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5 max-w-md">
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-1 sm:gap-1.5 max-w-md px-2">
         {faceConfigurations.map((face, idx) => {
           const isSelected = currentIndex === face.serviceIndex;
           return (
@@ -433,7 +433,7 @@ export default function ShowcaseCube({
               key={face.index}
               type="button"
               onClick={() => handleSelect(face.serviceIndex)}
-              className={`rounded-full px-3 py-1 text-[11px] font-semibold transition-all duration-200 cursor-pointer ${
+              className={`rounded-full px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-semibold transition-all duration-200 cursor-pointer ${
                 isSelected
                   ? "bg-white text-navy-950 shadow-md ring-2 ring-orange-400"
                   : "border border-white/20 bg-white/5 text-navy-200 hover:border-white/40 hover:bg-white/10"
