@@ -158,14 +158,22 @@ export default function Testimonials({
     return () => clearInterval(timer);
   }, [next, isPaused, viewMode]);
 
-  // Smoothly center active pill in bottom dock on mobile / screen changes
+  const isFirstRender = useRef(true);
+
+  // Smoothly center active pill in bottom dock on user interaction (strictly container-internal horizontal scroll)
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    const container = dockContainerRef.current;
     const currentBtn = dockButtonRefs.current[active];
-    if (currentBtn && dockContainerRef.current) {
-      currentBtn.scrollIntoView({
+    if (container && currentBtn) {
+      const targetLeft =
+        currentBtn.offsetLeft - container.offsetWidth / 2 + currentBtn.offsetWidth / 2;
+      container.scrollTo({
+        left: targetLeft,
         behavior: "smooth",
-        block: "nearest",
-        inline: "center",
       });
     }
   }, [active]);
