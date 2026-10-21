@@ -124,8 +124,22 @@ export default function Testimonials({
   const [viewMode, setViewMode] = useState<"stage" | "grid">("stage");
   const [isPaused, setIsPaused] = useState(false);
   const [mouseTilt, setMouseTilt] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  const dockContainerRef = useRef<HTMLDivElement>(null);
+  const dockButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const total = items.length;
+
+  // Viewport detection for mobile-specific 3D deck tuning
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile, { passive: true });
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const goTo = useCallback(
     (index: number) => {
@@ -144,7 +158,19 @@ export default function Testimonials({
     return () => clearInterval(timer);
   }, [next, isPaused, viewMode]);
 
-  // Touch swipe handling
+  // Smoothly center active pill in bottom dock on mobile / screen changes
+  useEffect(() => {
+    const currentBtn = dockButtonRefs.current[active];
+    if (currentBtn && dockContainerRef.current) {
+      currentBtn.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [active]);
+
+  // Touch swipe handling with directional intent detection
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
 
@@ -160,7 +186,7 @@ export default function Testimonials({
     const deltaY = e.changedTouches[0].clientY - touchStartY.current;
 
     // Detect horizontal swipe with high intent
-    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+    if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
       if (deltaX < 0) {
         next();
       } else {
@@ -169,8 +195,9 @@ export default function Testimonials({
     }
   };
 
-  // Cursor 3D micro-tilt on active card
+  // Cursor 3D micro-tilt on active card (desktop only)
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -188,7 +215,7 @@ export default function Testimonials({
     <div
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={handleMouseLeave}
-      className="relative overflow-hidden rounded-3xl border border-white/40 bg-gradient-to-b from-[#091124]/95 via-[#0c1836]/90 to-[#070e20]/95 py-8 px-4 sm:py-12 sm:px-8 lg:px-10 text-white shadow-2xl backdrop-blur-xl"
+      className="relative overflow-hidden rounded-3xl border border-white/40 bg-gradient-to-b from-[#091124]/95 via-[#0c1836]/90 to-[#070e20]/95 py-6 px-3 sm:py-12 sm:px-8 lg:px-10 text-white shadow-2xl backdrop-blur-xl"
       role="region"
       aria-label="Client testimonials showcase"
     >
@@ -206,27 +233,27 @@ export default function Testimonials({
       />
 
       {/* Header with Title, Mode Switcher & Controls */}
-      <div className="relative z-10 mb-8 sm:mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between px-2 sm:px-4">
+      <div className="relative z-10 mb-6 sm:mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between px-1 sm:px-4">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-3.5 py-1 text-xs font-semibold text-orange-400 backdrop-blur-md shadow-xs">
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-xs font-semibold text-orange-400 backdrop-blur-md shadow-xs">
             <Sparkles className="h-3.5 w-3.5 text-orange-400" />
             <span>Verified Client Evidence</span>
           </div>
-          <h2 className="mt-2.5 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+          <h2 className="mt-2 font-display text-xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
             Trusted by Growing Brands
           </h2>
-          <p className="mt-1.5 max-w-xl text-xs sm:text-sm leading-relaxed text-navy-200">
+          <p className="mt-1 max-w-xl text-xs sm:text-sm leading-relaxed text-navy-200">
             Explore authentic feedback and verified commercial outcomes across UK and international campaigns.
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 self-start sm:self-auto">
+        <div className="flex items-center justify-between sm:justify-end gap-2.5 w-full sm:w-auto">
           {/* View Mode Switcher: 3D Stage vs Full Grid */}
           <div className="flex items-center gap-1 rounded-full border border-white/15 bg-white/5 p-1 backdrop-blur-md shadow-xs">
             <button
               type="button"
               onClick={() => setViewMode("stage")}
-              className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 rounded-full px-2.5 sm:px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
                 viewMode === "stage"
                   ? "bg-white text-navy-950 shadow-md"
                   : "text-navy-200 hover:text-white"
@@ -238,7 +265,7 @@ export default function Testimonials({
             <button
               type="button"
               onClick={() => setViewMode("grid")}
-              className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 rounded-full px-2.5 sm:px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
                 viewMode === "grid"
                   ? "bg-white text-navy-950 shadow-md"
                   : "text-navy-200 hover:text-white"
@@ -251,7 +278,7 @@ export default function Testimonials({
 
           {/* Auto-sliding indicator pill */}
           {viewMode === "stage" && (
-            <div className="hidden md:inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-navy-200 backdrop-blur-md">
+            <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-navy-200 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span
                   className={`absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 ${
@@ -278,9 +305,9 @@ export default function Testimonials({
                 whileTap={{ scale: 0.92 }}
                 onClick={prev}
                 aria-label="Previous testimonial"
-                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-md backdrop-blur-md transition-colors hover:bg-orange-500 hover:border-orange-400 active:scale-95"
+                className="flex h-8 w-8 sm:h-9 sm:w-9 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-md backdrop-blur-md transition-colors hover:bg-orange-500 hover:border-orange-400 active:scale-95"
               >
-                <ChevronLeft className="h-4 w-4" />
+                <ChevronLeft className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               </motion.button>
               <motion.button
                 type="button"
@@ -288,9 +315,9 @@ export default function Testimonials({
                 whileTap={{ scale: 0.92 }}
                 onClick={next}
                 aria-label="Next testimonial"
-                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-md backdrop-blur-md transition-colors hover:bg-orange-500 hover:border-orange-400 active:scale-95"
+                className="flex h-8 w-8 sm:h-9 sm:w-9 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-md backdrop-blur-md transition-colors hover:bg-orange-500 hover:border-orange-400 active:scale-95"
               >
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               </motion.button>
             </div>
           )}
@@ -304,7 +331,7 @@ export default function Testimonials({
           <div
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            className="relative flex items-center justify-center w-full h-[460px] sm:h-[480px] lg:h-[500px] overflow-hidden select-none [perspective:1400px]"
+            className="relative flex items-center justify-center w-full h-[450px] sm:h-[480px] lg:h-[500px] overflow-hidden select-none [perspective:1200px] sm:[perspective:1400px] touch-pan-y"
           >
             {/* Visual Horizon Floor Sheen */}
             <div className="pointer-events-none absolute bottom-0 inset-x-8 h-24 bg-gradient-to-t from-white/[0.04] to-transparent rounded-full blur-xl" />
@@ -324,15 +351,15 @@ export default function Testimonials({
 
               const meta = clientMeta[index] || clientMeta[0];
 
-              // Responsive positioning variants based on relative index
+              // Responsive positioning variants based on relative index and viewport
               let animateProps = {};
               if (isCenter) {
                 animateProps = {
                   x: "0%",
                   y: 0,
-                  z: 40,
-                  rotateY: mouseTilt.x,
-                  rotateX: mouseTilt.y,
+                  z: isMobile ? 10 : 40,
+                  rotateY: isMobile ? 0 : mouseTilt.x,
+                  rotateX: isMobile ? 0 : mouseTilt.y,
                   scale: 1,
                   opacity: 1,
                   zIndex: 30,
@@ -340,31 +367,31 @@ export default function Testimonials({
                 };
               } else if (isRight) {
                 animateProps = {
-                  x: "56%",
-                  y: 18,
-                  z: -120,
-                  rotateY: -16,
+                  x: isMobile ? "82%" : "56%",
+                  y: isMobile ? 14 : 18,
+                  z: isMobile ? -80 : -120,
+                  rotateY: isMobile ? -10 : -16,
                   rotateX: 0,
-                  scale: 0.88,
-                  opacity: 0.65,
+                  scale: isMobile ? 0.82 : 0.88,
+                  opacity: isMobile ? 0.22 : 0.65,
                   zIndex: 20,
-                  filter: "brightness(0.75)",
+                  filter: isMobile ? "brightness(0.6) blur(0.5px)" : "brightness(0.75)",
                 };
               } else if (isLeft) {
                 animateProps = {
-                  x: "-56%",
-                  y: 18,
-                  z: -120,
-                  rotateY: 16,
+                  x: isMobile ? "-82%" : "-56%",
+                  y: isMobile ? 14 : 18,
+                  z: isMobile ? -80 : -120,
+                  rotateY: isMobile ? 10 : 16,
                   rotateX: 0,
-                  scale: 0.88,
-                  opacity: 0.65,
+                  scale: isMobile ? 0.82 : 0.88,
+                  opacity: isMobile ? 0.22 : 0.65,
                   zIndex: 20,
-                  filter: "brightness(0.75)",
+                  filter: isMobile ? "brightness(0.6) blur(0.5px)" : "brightness(0.75)",
                 };
               } else {
                 animateProps = {
-                  x: normalizedDiff > 0 ? "110%" : "-110%",
+                  x: normalizedDiff > 0 ? (isMobile ? "130%" : "110%") : (isMobile ? "-130%" : "-110%"),
                   y: 35,
                   z: -280,
                   rotateY: normalizedDiff > 0 ? -24 : 24,
@@ -388,11 +415,11 @@ export default function Testimonials({
                     mass: 0.9,
                   }}
                   onMouseMove={isCenter ? handleMouseMove : undefined}
-                  onClick={() => !isCenter && goTo(index)}
-                  className={`absolute w-[92vw] max-w-[350px] sm:max-w-[420px] lg:max-w-[460px] h-[390px] sm:h-[410px] rounded-3xl p-6 sm:p-8 backdrop-blur-2xl transition-shadow duration-300 [transform-style:preserve-3d] ${
+                  onClick={() => !isCenter && !isMobile && goTo(index)}
+                  className={`absolute w-[88vw] max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] h-[395px] sm:h-[415px] rounded-3xl p-4 sm:p-7 lg:p-8 backdrop-blur-2xl transition-shadow duration-300 [transform-style:preserve-3d] ${
                     isCenter
                       ? "cursor-default shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-2"
-                      : "cursor-pointer border border-white/10 hover:border-white/30"
+                      : "border border-white/10 hover:border-white/30 cursor-pointer"
                   }`}
                   style={{
                     backgroundColor: isCenter ? "#0b1530e6" : "#091024d9",
@@ -400,48 +427,49 @@ export default function Testimonials({
                     boxShadow: isCenter
                       ? `0 0 35px ${meta.accent}30, 0 20px 50px rgba(0,0,0,0.6)`
                       : undefined,
+                    pointerEvents: isCenter ? "auto" : (isMobile ? "none" : "auto"),
                   }}
                 >
                   {/* Top Card Bar: Metric Badge + 5 Gold Stars */}
-                  <div className="flex items-center justify-between gap-3 mb-4">
+                  <div className="flex items-center justify-between gap-2 mb-3 sm:mb-4">
                     {item.metric ? (
                       <div
-                        className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold shadow-xs border"
+                        className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold shadow-xs border"
                         style={{
                           backgroundColor: `${meta.accent}20`,
                           color: meta.accent,
                           borderColor: `${meta.accent}50`,
                         }}
                       >
-                        <TrendingUp className="h-3.5 w-3.5" />
-                        <span>{item.metric}</span>
+                        <TrendingUp className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" />
+                        <span className="truncate max-w-[170px] sm:max-w-none">{item.metric}</span>
                       </div>
                     ) : (
                       <span />
                     )}
 
-                    <div className="flex items-center gap-1 rounded-full bg-white/10 px-2.5 py-1 border border-white/10">
+                    <div className="flex items-center gap-0.5 sm:gap-1 rounded-full bg-white/10 px-2 py-1 sm:px-2.5 sm:py-1 border border-white/10 shrink-0">
                       {Array.from({ length: 5 }).map((_, s) => (
-                        <Star key={s} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                        <Star key={s} className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
                   </div>
 
                   {/* Quotation Icon & Quote Text */}
                   <Quote
-                    className="h-7 w-7 mb-2 opacity-60"
+                    className="h-6 w-6 sm:h-7 sm:w-7 mb-2 opacity-60 shrink-0"
                     style={{ color: meta.accent }}
                   />
-                  <blockquote className="text-sm sm:text-[15px] font-medium leading-relaxed text-white line-clamp-5">
+                  <blockquote className="text-[13px] sm:text-[15px] font-medium leading-relaxed text-white line-clamp-4 sm:line-clamp-5">
                     &ldquo;{item.quote}&rdquo;
                   </blockquote>
 
                   {/* Card Footer: Client Info & Verification Check */}
-                  <div className="absolute bottom-6 left-6 right-6 border-t border-white/10 pt-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-3 min-w-0">
+                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-7 lg:left-8 right-4 sm:right-7 lg:right-8 border-t border-white/10 pt-3 sm:pt-4">
+                    <div className="flex items-center justify-between gap-2.5">
+                      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                         <div
-                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-navy-950 font-display text-sm font-bold border-2 shadow-xs"
+                          className="flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl bg-navy-950 font-display text-xs sm:text-sm font-bold border-2 shadow-xs"
                           style={{
                             borderColor: meta.accent,
                             color: meta.accent,
@@ -450,25 +478,25 @@ export default function Testimonials({
                           {getInitials(item.company)}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <div className="truncate font-display text-sm font-bold text-white">
+                          <div className="truncate font-display text-xs sm:text-sm font-bold text-white">
                             {item.role}
                           </div>
-                          <div className="truncate text-xs font-semibold text-orange-400">
+                          <div className="truncate text-[11px] sm:text-xs font-semibold text-orange-400">
                             {item.company}
                           </div>
-                          <div className="truncate text-[11px] text-navy-300 flex items-center gap-1 mt-0.5">
-                            <MapPin className="h-3 w-3 shrink-0 text-navy-400" />
-                            <span>{item.location}</span>
+                          <div className="truncate text-[10px] sm:text-[11px] text-navy-300 flex items-center gap-1 mt-0.5">
+                            <MapPin className="h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0 text-navy-400" />
+                            <span className="truncate">{item.location}</span>
                           </div>
                         </div>
                       </div>
 
                       <div className="shrink-0 text-right">
-                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/30">
-                          <CheckCircle2 className="h-3 w-3" /> Verified
+                        <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded-md border border-emerald-500/30">
+                          <CheckCircle2 className="h-2.5 w-2.5 sm:h-3 sm:w-3" /> Verified
                         </span>
                         {item.service && (
-                          <p className="mt-1 text-[10px] text-navy-300 font-medium truncate max-w-[120px]">
+                          <p className="mt-1 text-[9px] sm:text-[10px] text-navy-300 font-medium truncate max-w-[95px] sm:max-w-[120px]">
                             {item.service}
                           </p>
                         )}
@@ -480,8 +508,26 @@ export default function Testimonials({
             })}
           </div>
 
+          {/* Mobile dot pagination indicator */}
+          <div className="flex sm:hidden items-center justify-center gap-1.5 mt-2 mb-1">
+            {items.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => goTo(i)}
+                aria-label={`Go to testimonial ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === active ? "w-6 bg-orange-500" : "w-1.5 bg-white/25 hover:bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+
           {/* Interactive Client Evidence Selector Dock */}
-          <div className="mt-4 flex items-center justify-start sm:justify-center gap-2 overflow-x-auto max-w-full pb-2 px-2 no-scrollbar">
+          <div
+            ref={dockContainerRef}
+            className="mt-2 sm:mt-4 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 overflow-x-auto max-w-full pb-2 px-1 sm:px-2 no-scrollbar touch-pan-x"
+          >
             {items.map((item, idx) => {
               const isSelected = active === idx;
               const meta = clientMeta[idx] || clientMeta[0];
@@ -490,9 +536,12 @@ export default function Testimonials({
               return (
                 <button
                   key={idx}
+                  ref={(el) => {
+                    dockButtonRefs.current[idx] = el;
+                  }}
                   type="button"
                   onClick={() => goTo(idx)}
-                  className={`group relative flex items-center gap-2 rounded-2xl px-3.5 py-2 text-xs font-semibold transition-all duration-200 shrink-0 cursor-pointer ${
+                  className={`group relative flex items-center gap-1.5 sm:gap-2 rounded-xl sm:rounded-2xl px-3 sm:px-3.5 py-1.5 sm:py-2 text-[11px] sm:text-xs font-semibold transition-all duration-200 shrink-0 cursor-pointer ${
                     isSelected
                       ? "text-white shadow-lg border"
                       : "border border-white/10 bg-white/5 text-navy-200 hover:border-white/25 hover:bg-white/10"
@@ -504,7 +553,7 @@ export default function Testimonials({
                   }}
                 >
                   <Icon
-                    className="h-3.5 w-3.5 transition-transform group-hover:scale-110"
+                    className="h-3 w-3 sm:h-3.5 sm:w-3.5 transition-transform group-hover:scale-110"
                     style={{ color: meta.accent }}
                   />
                   <span>{meta.shortName}</span>
@@ -525,14 +574,14 @@ export default function Testimonials({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.35 }}
-          className="relative z-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="relative z-10 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
         >
           {items.map((item, index) => {
             const meta = clientMeta[index] || clientMeta[0];
             return (
               <div
                 key={index}
-                className="flex flex-col justify-between rounded-3xl border border-white/10 bg-navy-950/70 p-6 backdrop-blur-md shadow-lg transition-all hover:border-white/30 hover:-translate-y-1"
+                className="flex flex-col justify-between rounded-2xl sm:rounded-3xl border border-white/10 bg-navy-950/70 p-5 sm:p-6 backdrop-blur-md shadow-lg transition-all hover:border-white/30 hover:-translate-y-1"
                 style={{
                   borderTopColor: meta.accent,
                   borderTopWidth: 3,
