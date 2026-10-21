@@ -303,13 +303,19 @@ function OrbitRingMesh({
     const angle = currentAngle.current;
     const time = state.clock.elapsedTime;
 
+    // Viewport-adaptive responsive radius and scale for mobile & tablet
+    const viewportWidth = state.viewport.width;
+    const isMobile = viewportWidth < 7.5;
+    const responsiveRadius = isMobile ? Math.max(3.0, viewportWidth * 0.46) : RADIUS;
+    const responsiveCardScale = isMobile ? Math.min(1.0, viewportWidth / 7.8) : 1.0;
+
     // Position and orient each card in circular orbit
     cardMeshes.current.forEach((mesh, i) => {
       if (!mesh) return;
 
       const theta = (i / count) * Math.PI * 2 + angle;
-      const x = RADIUS * Math.sin(theta);
-      const z = RADIUS * Math.cos(theta);
+      const x = responsiveRadius * Math.sin(theta);
+      const z = responsiveRadius * Math.cos(theta);
       const y = Math.sin(theta * 2 + time * 1.2) * 0.12;
 
       mesh.position.set(x, y, z);
@@ -318,8 +324,8 @@ function OrbitRingMesh({
       mesh.lookAt(0, 0.4, 9.5);
 
       // Depth scaling and contrast: cards in front are full scale and bright
-      const normalizedZ = (z + RADIUS) / (RADIUS * 2); // 0 (back) to 1 (front)
-      const scale = THREE.MathUtils.lerp(0.72, 1.05, normalizedZ);
+      const normalizedZ = (z + responsiveRadius) / (responsiveRadius * 2); // 0 (back) to 1 (front)
+      const scale = THREE.MathUtils.lerp(0.72, 1.05, normalizedZ) * responsiveCardScale;
       mesh.scale.set(scale, scale, scale);
 
       // Depth opacity attenuation
@@ -431,11 +437,11 @@ export default function OrbitGallery() {
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerLeave={handlePointerUp}
-        className="relative h-[480px] sm:h-[560px] w-full rounded-3xl border border-white/20 bg-gradient-to-b from-navy-950/80 via-[#0a1329]/60 to-navy-950/80 shadow-2xl backdrop-blur-xl overflow-hidden cursor-grab active:cursor-grabbing"
+        className="relative h-[440px] sm:h-[560px] w-full rounded-3xl border border-white/20 bg-gradient-to-b from-navy-950/80 via-[#0a1329]/60 to-navy-950/80 shadow-2xl backdrop-blur-xl overflow-hidden cursor-grab active:cursor-grabbing touch-none"
       >
         {/* Top Hint Pill */}
-        <div className="absolute top-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/90 backdrop-blur-md shadow-xs">
-          <MoveHorizontal className="h-4 w-4 text-orange-400 animate-pulse" />
+        <div className="absolute top-3.5 sm:top-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 sm:px-4 py-1.5 text-[10px] sm:text-xs font-semibold text-white/90 backdrop-blur-md shadow-xs whitespace-nowrap">
+          <MoveHorizontal className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-orange-400 animate-pulse" />
           <span>Radial 3D Orbit Ring · Drag or Tap to Spin</span>
         </div>
 
@@ -476,22 +482,22 @@ export default function OrbitGallery() {
           type="button"
           onClick={prev}
           aria-label="Previous case study card"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-navy-950/80 text-white shadow-xl backdrop-blur-md transition-all hover:bg-orange-500 hover:border-orange-400 active:scale-95 cursor-pointer"
+          className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-white/20 bg-navy-950/80 text-white shadow-xl backdrop-blur-md transition-all hover:bg-orange-500 hover:border-orange-400 active:scale-95 cursor-pointer"
         >
-          <ChevronLeft className="h-5 w-5" />
+          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
         <button
           type="button"
           onClick={next}
           aria-label="Next case study card"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-navy-950/80 text-white shadow-xl backdrop-blur-md transition-all hover:bg-orange-500 hover:border-orange-400 active:scale-95 cursor-pointer"
+          className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-white/20 bg-navy-950/80 text-white shadow-xl backdrop-blur-md transition-all hover:bg-orange-500 hover:border-orange-400 active:scale-95 cursor-pointer"
         >
-          <ChevronRight className="h-5 w-5" />
+          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
       </div>
 
       {/* Active Card Bottom Spotlight Card */}
-      <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl border border-white/30 bg-white/70 p-6 sm:p-7 backdrop-blur-md shadow-lg">
+      <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-3xl border border-white/30 bg-white/70 p-5 sm:p-7 backdrop-blur-md shadow-lg">
         <div className="flex flex-col text-left">
           <div className="flex items-center gap-2">
             <span className="rounded-md bg-navy-900 px-2.5 py-0.5 text-xs font-semibold text-orange-400">
@@ -501,13 +507,13 @@ export default function OrbitGallery() {
               Project 0{activeIndex + 1} of 0{count}
             </span>
           </div>
-          <h3 className="mt-2 font-display text-lg sm:text-xl font-bold text-navy-900 leading-snug">
+          <h3 className="mt-2 font-display text-base sm:text-lg lg:text-xl font-bold text-navy-900 leading-snug">
             {activeItem.title}
           </h3>
         </div>
 
-        <div className="flex items-center gap-4 shrink-0">
-          <div className="text-right">
+        <div className="flex w-full sm:w-auto items-center justify-between sm:justify-end gap-4 shrink-0 border-t border-navy-100/60 pt-4 sm:border-t-0 sm:pt-0">
+          <div className="text-left sm:text-right">
             <span className="font-display text-2xl sm:text-3xl font-bold text-orange-600">
               {activeItem.metric}
             </span>
@@ -516,7 +522,7 @@ export default function OrbitGallery() {
 
           <Link
             href={`/case-studies/${activeItem.slug}`}
-            className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-orange-500/30 transition-all hover:bg-orange-600 hover:shadow-orange-500/40 active:scale-95"
+            className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-white shadow-md shadow-orange-500/30 transition-all hover:bg-orange-600 hover:shadow-orange-500/40 active:scale-95"
           >
             <span>Read Study</span>
             <ArrowRight className="h-4 w-4" />

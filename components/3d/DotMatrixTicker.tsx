@@ -225,8 +225,8 @@ export default function DotMatrixTicker({
       <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#060b18] to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#060b18] to-transparent z-10" />
 
-      {/* Three.js Canvas Container */}
-      <div className="h-[90px] sm:h-[110px] w-full">
+      {/* Three.js Canvas Container (pointer-events-none ensures frictionless touch scrolling on mobile) */}
+      <div className="h-[90px] sm:h-[110px] w-full pointer-events-none">
         <Canvas
           camera={{ position: [0, 0, 4.2], fov: 32 }}
           gl={{
