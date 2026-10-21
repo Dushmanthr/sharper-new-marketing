@@ -35,6 +35,7 @@ import ServicesExplorer from "@/components/ServicesExplorer";
 import CaseStudiesShowcase from "@/components/CaseStudiesShowcase";
 import Scene from "@/components/3d/Scene";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import DotMatrixRibbon from "@/components/3d/DotMatrixRibbon";
 import { caseStudies, site, targetKeywords } from "@/lib/site";
 import { faqJsonLd, pageMeta, webPageJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
@@ -272,6 +273,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Signature Creative LED Typography Ticker (Inspired by Nudot) */}
+      <DotMatrixRibbon
+        text="SHARPER LABS · CREATIVE DIGITAL AGENCY · BRAND IDENTITY · UI/UX DEVELOPMENT · ENTERPRISE SEO · PPC PERFORMANCE · UK & INTERNATIONAL · "
+        speed={1.0}
+      />
 
       {/* 03. Homepage Message: Turn Your Digital Presence into Business Growth */}
       <Section tone="white">
