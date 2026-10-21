@@ -20,7 +20,7 @@ export default function ParallaxBand({
     <section
       className={`parallax-band relative isolate overflow-hidden ${className}`}
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(13,23,48,0.82), rgba(13,23,48,0.82)), url(${src})`,
+        backgroundImage: `linear-gradient(to bottom, rgba(13,23,48,0.60), rgba(13,23,48,0.60)), url(${src})`,
       }}
     >
       <div className="container-page relative py-20 text-center text-white sm:py-24 lg:py-28">
