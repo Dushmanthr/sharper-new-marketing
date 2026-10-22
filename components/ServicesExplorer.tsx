@@ -42,7 +42,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export default function ServicesExplorer() {
   const [activeSlug, setActiveSlug] = useState(services[0].slug);
-  const [viewMode, setViewMode] = useState<"blueprint" | "cube">("blueprint");
+  const [viewMode, setViewMode] = useState<"blueprint" | "cube">("cube");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const activeIndex = Math.max(0, services.findIndex((s) => s.slug === activeSlug));
@@ -51,21 +51,9 @@ export default function ServicesExplorer() {
 
   return (
     <div className="relative">
-      {/* View Switcher: Blueprint Panel vs Interactive 3D Prism */}
+      {/* View Switcher: Interactive 3D Prism vs Blueprint Specs */}
       <div className="flex items-center justify-center mb-6 px-2">
         <div className="flex items-center gap-1.5 rounded-full border border-white/30 bg-white/70 p-1 backdrop-blur-md shadow-xs">
-          <button
-            type="button"
-            onClick={() => setViewMode("blueprint")}
-            className={`flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
-              viewMode === "blueprint"
-                ? "bg-navy-950 text-white shadow-md"
-                : "text-navy-700 hover:text-navy-900"
-            }`}
-          >
-            <Layers className="h-3.5 w-3.5 text-orange-400" />
-            <span>Blueprint Specs</span>
-          </button>
           <button
             type="button"
             onClick={() => setViewMode("cube")}
@@ -77,6 +65,18 @@ export default function ServicesExplorer() {
           >
             <Box className="h-3.5 w-3.5 text-cyan-400" />
             <span>Interactive 3D Prism</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode("blueprint")}
+            className={`flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
+              viewMode === "blueprint"
+                ? "bg-navy-950 text-white shadow-md"
+                : "text-navy-700 hover:text-navy-900"
+            }`}
+          >
+            <Layers className="h-3.5 w-3.5 text-orange-400" />
+            <span>Blueprint Specs</span>
           </button>
         </div>
       </div>
