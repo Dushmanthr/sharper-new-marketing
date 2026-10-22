@@ -2,7 +2,7 @@ import Section, { SectionHeading } from "@/components/Section";
 import PageHero from "@/components/PageHero";
 import ServiceCard from "@/components/ServiceCard";
 import ServicesExplorer from "@/components/ServicesExplorer";
-import InteractiveAudit from "@/components/InteractiveAudit";
+//import InteractiveAudit from "@/components/InteractiveAudit";
 import CTASection from "@/components/CTASection";
 import JsonLd from "@/components/JsonLd";
 import { services } from "@/lib/site";
@@ -73,11 +73,11 @@ export default function ServicesPage() {
       </Section>
 
       {/* Interactive Growth Calculator */}
-      <section className="py-12 sm:py-16">
+      {/* <section className="py-12 sm:py-16">
         <div className="container-page">
           <InteractiveAudit />
         </div>
-      </section>
+      </section> */}
 
       <CTASection
         title={
