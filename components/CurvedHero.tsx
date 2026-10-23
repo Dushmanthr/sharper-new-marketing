@@ -1,74 +1,87 @@
+"use client";
+
 import type { ReactNode } from "react";
 
 /**
- * Eclipse-style hero: left-aligned text on a navy panel, with a full-height
- * media panel that bleeds to the right edge behind a large concave curve and a
- * sharp orange accent arc. On mobile the layout stacks and the media becomes a
- * simple rounded card (the curve is desktop-only, see .hero-curve-media in
- * globals.css).
- *
- * `media` should be a self-filling element (e.g. next/image with `fill`, or the
- * ImageCarousel in `fill` mode) since its wrapper is a positioned box.
+ * Modern 3D Spatial Hero Layout
+ * Features a bold, uncluttered layout where the interactive 3D WebGL
+ * brand logo takes center stage on the right, supported by luminous
+ * atmospheric lighting, floating particles, and telemetry guide rings.
  */
 export default function CurvedHero({
   children,
   media,
 }: {
   children: ReactNode;
-  media: ReactNode;
+  media?: ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden bg-navy-950/40 text-white backdrop-blur-[2px]">
-      <div className="hero-grid absolute inset-0 opacity-30" aria-hidden />
+      {/* Subtle geometric grid texture */}
+      <div className="hero-grid absolute inset-0 opacity-25" aria-hidden />
+
+      {/* Dynamic ambient chromatic glow orbs */}
       <div
         aria-hidden
-        className="absolute -left-24 top-1/4 h-80 w-80 rounded-full bg-orange-500/12 blur-3xl pointer-events-none"
+        className="absolute -left-20 top-1/4 h-96 w-96 rounded-full bg-orange-500/10 blur-[100px] pointer-events-none"
       />
       <div
         aria-hidden
-        className="absolute right-1/3 top-1/3 h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"
+        className="absolute right-1/4 top-1/4 h-[450px] w-[450px] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none"
+      />
+      <div
+        aria-hidden
+        className="absolute right-10 top-1/3 h-80 w-80 rounded-full bg-orange-500/12 blur-[100px] pointer-events-none"
       />
 
-      {/* Responsive concave clip (objectBoundingBox units scale with the box). */}
-      <svg width="0" height="0" className="absolute" aria-hidden focusable="false">
-        <defs>
-          <clipPath id="heroCurveClip" clipPathUnits="objectBoundingBox">
-            <path d="M0.16,0 C0,0.34 0,0.66 0.16,1 L1,1 L1,0 Z" />
-          </clipPath>
-        </defs>
-      </svg>
+      <div className="container-page relative z-10 py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 xl:gap-14 items-center">
+          
+          {/* Left Column: Strategic Value Proposition & High-Converting Journey */}
+          <div className="md:col-span-7 xl:col-span-7 max-w-2xl">
+            {/* Mobile 3D Brand Emblem Stage: dedicated breathing space for 3D logo on mobile */}
+            <div className="h-28 sm:h-32 w-full md:hidden relative flex items-center justify-center pointer-events-none mb-3">
+              <div className="w-28 h-28 rounded-full border border-orange-500/20 border-dashed animate-[spin_40s_linear_infinite]" />
+              <div className="absolute w-20 h-20 rounded-full bg-orange-500/10 blur-xl" />
+            </div>
 
-      {/* Text column */}
-      <div className="container-page relative">
-        <div className="max-w-xl py-14 sm:py-16 lg:max-w-[46%] lg:py-28 xl:py-32">
             {children}
           </div>
-        </div>
 
-      {/* Media: rounded card on mobile, full-height curved bleed on desktop. */}
-      <div className="relative mx-5 mb-12 h-72 overflow-hidden rounded-3xl border border-white/10 shadow-2xl sm:mx-8 sm:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:mx-0 lg:mb-0 lg:h-full lg:w-1/2 lg:overflow-visible lg:rounded-none lg:border-0 lg:shadow-none">
-        <div className="hero-curve-media relative h-full w-full overflow-hidden opacity-95">
-          {media}
-          {/* Subtle gradient vignette to blend curve with 3D space */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy-950/35 via-transparent to-transparent hidden lg:block" />
+          {/* Right Column: Dedicated 3D Interactive Brand Centerpiece Stage */}
+          <div className="md:col-span-5 xl:col-span-5 flex flex-col items-center justify-center relative min-h-[360px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[540px] xl:min-h-[580px] pointer-events-none">
+            
+            {/* Ambient 3D Stage Core Aura: Gives the 3D rotating logo an ethereal glowing halo behind it */}
+            <div 
+              aria-hidden 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 sm:w-[440px] sm:h-[440px] lg:w-[500px] lg:h-[500px] rounded-full bg-gradient-to-tr from-orange-500/18 via-cyan-500/14 to-transparent blur-3xl pointer-events-none"
+            />
+
+            {/* Subtle orbital tech telemetry rings framing the 3D rotating logo */}
+            <div className="hidden md:flex relative items-center justify-center pointer-events-none">
+              {/* Outer dashed orbit */}
+              <div className="w-80 h-80 lg:w-[400px] lg:h-[400px] xl:w-[460px] xl:h-[460px] rounded-full border border-white/5 border-dashed animate-[spin_75s_linear_infinite] opacity-60" />
+              
+              {/* Middle chromatic ring */}
+              <div className="absolute w-64 h-64 lg:w-[310px] lg:h-[310px] xl:w-[360px] xl:h-[360px] rounded-full border border-orange-500/15 animate-[spin_50s_linear_infinite_reverse] opacity-50" />
+              
+              {/* Inner focal pulse ring */}
+              <div className="absolute w-48 h-48 lg:w-56 lg:h-56 rounded-full border border-cyan-400/20 animate-pulse opacity-40" />
+              
+              {/* Center subtle glow dot */}
+              <div className="absolute h-2.5 w-2.5 rounded-full bg-orange-400/40 blur-xs" />
+            </div>
+
+            {/* If media is provided as a fallback, render it gracefully */}
+            {media && (
+              <div className="pointer-events-auto relative z-10 w-full mt-4">
+                {media}
+              </div>
+            )}
+
+          </div>
+
         </div>
-        {/* Orange accent arc, traces the curve (desktop only). */}
-        <svg
-          className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          aria-hidden
-          focusable="false"
-        >
-          <path
-            d="M16,0 C0,34 0,66 16,100"
-            fill="none"
-            stroke="#f47b20"
-            strokeWidth="2.5"
-            vectorEffect="non-scaling-stroke"
-            className="filter drop-shadow-[0_0_8px_rgba(244,123,32,0.65)]"
-          />
-        </svg>
       </div>
     </section>
   );

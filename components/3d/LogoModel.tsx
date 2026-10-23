@@ -152,8 +152,14 @@ function createFallbackParts(extrudeSettings: THREE.ExtrudeGeometryOptions): Log
  * Mathematical Choreography Evaluator
  * Computes continuous, systematic gyroscopic orientation across the scroll journey [0, 1]
  */
-function evaluateChoreography(progress: number, maxX: number, isMobile: boolean) {
+function evaluateChoreography(
+  progress: number,
+  maxX: number,
+  vpWidth: number,
+  device: { isMobile: boolean; isTablet: boolean }
+) {
   const p = Math.max(0, Math.min(1, progress));
+  const { isMobile, isTablet } = device;
 
   // Continuous systematic rotation: 2 complete 360° revolutions across the entire page
   const rotY = p * Math.PI * 4;
@@ -164,17 +170,24 @@ function evaluateChoreography(progress: number, maxX: number, isMobile: boolean)
   let rotZ = 0;
   let scaleMult = 1.0;
 
+  // Dynamically compute hero X from Three.js viewport width so logo always
+  // centers in the right column of the 7/12 + 5/12 grid layout.
+  // Center of right column = 75% from left = 25% from center toward right = vpWidth * 0.25
+  const startX = isMobile ? 0 : vpWidth * 0.25;
+  const startY = isMobile ? 1.35 : isTablet ? -0.78 : -0.82;
+  const heroRotX = isMobile ? 0.08 : 0.12;
+  const heroScaleMult = isMobile ? 1.15 : isTablet ? 1.35 : 1.55;
+
   if (p < 0.22) {
     // Stage 1: Hero to Section 2 (UK Heritage)
-    // Starts front-facing in hero, glides right while rotating 180° around Y
+    // Starts prominently filling the right side of hero, smoothly glides to maxX while scaling down to compact scroll size and rotating 180° around Y
     const t = p / 0.22;
     const smoothT = t * t * (3 - 2 * t);
-    const startX = isMobile ? 0 : 0.8;
     posX = THREE.MathUtils.lerp(startX, maxX, smoothT);
-    posY = THREE.MathUtils.lerp(0, -0.1, smoothT);
-    rotX = THREE.MathUtils.lerp(0.12, 0.22, smoothT);
+    posY = THREE.MathUtils.lerp(startY, -0.1, smoothT);
+    rotX = THREE.MathUtils.lerp(heroRotX, 0.22, smoothT);
     rotZ = THREE.MathUtils.lerp(0, -0.14, smoothT); // aerodynamic banking into the turn
-    scaleMult = THREE.MathUtils.lerp(1.0, 1.06, smoothT);
+    scaleMult = THREE.MathUtils.lerp(heroScaleMult, 1.0, smoothT);
   } else if (p < 0.50) {
     // Stage 2: Section 2 to Section 3 (Core Services)
     // Glides from right (+X) across the screen to left (-X) with dynamic isometric pitch
@@ -220,14 +233,21 @@ export default function LogoModel() {
   const scrollProgressRef = useRef(0);
   const scrollVelocityRef = useRef(0);
 
+  // Viewport detection for initial ref placement
+  const isMobileInit = size.width < 768;
+  const isTabletInit = size.width >= 768 && size.width < 1024;
+  // Use viewport width to compute initial hero X, matching evaluateChoreography logic
+  const initialStartX = isMobileInit ? 0 : viewport.width * 0.25;
+  const initialStartY = isMobileInit ? 1.35 : isTabletInit ? -0.78 : -0.82;
+
   // Smooth interpolation state refs for frame-independent damping
-  const currentPosX = useRef(0);
-  const currentPosY = useRef(0);
-  const currentPosZ = useRef(-2.5);
-  const currentRotX = useRef(0.12);
+  const currentPosX = useRef(initialStartX);
+  const currentPosY = useRef(initialStartY);
+  const currentPosZ = useRef(0);
+  const currentRotX = useRef(isMobileInit ? 0.08 : 0.12);
   const currentRotY = useRef(0);
   const currentRotZ = useRef(0);
-  const currentScale = useRef(0.001);
+  const currentScale = useRef(0.021 * (isMobileInit ? 1.15 : isTabletInit ? 1.35 : 1.55));
 
   // Initial entrance reveal refs (cinematic emergence on first arrival)
   const introStartTime = useRef<number | null>(null);
@@ -391,8 +411,15 @@ export default function LogoModel() {
 
   // Viewport-based responsive scale & layout calculations
   const isMobile = size.width < 768;
-  const baseScale = Math.min(viewport.width / 11, 0.033) * (isMobile ? 0.76 : 1);
-  const maxX = isMobile ? Math.min(viewport.width * 0.22, 0.8) : 2.4;
+  const isTablet = size.width >= 768 && size.width < 1024;
+  const baseScale =
+    Math.min(viewport.width / 16, 0.021) *
+    (isMobile ? 0.70 : isTablet ? 0.85 : 1.0);
+  const maxX = isMobile
+    ? Math.min(viewport.width * 0.22, 0.75)
+    : isTablet
+    ? 1.7
+    : 2.3;
 
   // Single continuous ScrollTrigger tracking scroll progress & kinetic velocity without dead zones
   useEffect(() => {
@@ -419,35 +446,35 @@ export default function LogoModel() {
     const velocity = scrollVelocityRef.current;
 
     // Evaluate continuous systematic choreography
-    const target = evaluateChoreography(progress, maxX, isMobile);
+    const target = evaluateChoreography(progress, maxX, viewport.width, { isMobile, isTablet });
 
-    // Initial entrance reveal timing (1.8s smooth cubic emergence)
+    // Initial entrance reveal timing (1.2s smooth emergence directly in hero stage)
     if (introStartTime.current === null) {
       introStartTime.current = state.clock.elapsedTime;
     }
     const elapsed = state.clock.elapsedTime - introStartTime.current;
-    const introT = Math.min(1.0, elapsed / 1.8);
+    const introT = Math.min(1.0, elapsed / 1.2);
     const introEase = 1.0 - Math.pow(1.0 - introT, 3);
     // If user starts scrolling, instantly complete the intro
     const effectiveIntro = progress > 0.01 ? 1.0 : introEase;
 
-    const introPosZ = (1.0 - effectiveIntro) * -2.5;
-    const introSpin = (1.0 - effectiveIntro) * Math.PI * 1.5;
-    const introScaleMult = THREE.MathUtils.lerp(0.35, 1.0, effectiveIntro);
+    const introPosZ = (1.0 - effectiveIntro) * -0.6;
+    const introSpin = (1.0 - effectiveIntro) * 0.35;
+    const introScaleMult = THREE.MathUtils.lerp(0.85, 1.0, effectiveIntro);
 
     // Subtle kinetic spin boost on fast scroll flicks (natural fluid momentum)
     const kineticSpin = THREE.MathUtils.clamp(velocity * 0.0001, -0.6, 0.6);
 
     // Subtle rhythmic floating micro-movement
-    const idleFloatY = Math.sin(state.clock.elapsedTime * 1.4) * 0.06;
-    const idleYaw = Math.cos(state.clock.elapsedTime * 0.9) * 0.03;
+    const idleFloatY = Math.sin(state.clock.elapsedTime * 1.4) * 0.05;
+    const idleYaw = Math.cos(state.clock.elapsedTime * 0.9) * 0.025;
 
     // Interactive mouse cursor parallax tilt
-    const mouseTiltX = state.pointer.y * 0.12;
-    const mouseTiltY = state.pointer.x * 0.18;
+    const mouseTiltX = state.pointer.y * 0.10;
+    const mouseTiltY = state.pointer.x * 0.15;
 
     // Frame-independent physical damping (Three.js damp)
-    const dampSpeed = 4.2;
+    const dampSpeed = 4.5;
     currentPosX.current = THREE.MathUtils.damp(
       currentPosX.current,
       target.posX,

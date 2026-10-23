@@ -26,7 +26,6 @@ import Testimonials from "@/components/Testimonials";
 import EnquiryForm from "@/components/EnquiryForm";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
-import ImageCarousel from "@/components/ImageCarousel";
 import CurvedHero from "@/components/CurvedHero";
 import ServicesTicker from "@/components/ServicesTicker";
 import JsonLd from "@/components/JsonLd";
@@ -163,7 +162,7 @@ export default function Home() {
 
         {/* 01. Hero Section — Facing forward, slight tilt */}
         <div id="hero" className="relative">
-          <CurvedHero media={<ImageCarousel fill />}>
+          <CurvedHero>
         <Reveal>
           <div className="inline-flex items-center gap-2.5 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-1.5 text-xs font-semibold text-orange-300 backdrop-blur-md shadow-[0_0_20px_rgba(249,115,22,0.15)]">
             <span className="relative flex h-2 w-2">
