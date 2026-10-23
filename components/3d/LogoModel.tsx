@@ -241,15 +241,16 @@ export default function LogoModel() {
   const initialStartY = isMobileInit ? 1.35 : isTabletInit ? -0.78 : -0.82;
 
   // Smooth interpolation state refs for frame-independent damping
+  // Initialized deep behind (negative Z) with small scale and rotation so it emerges seamlessly
   const currentPosX = useRef(initialStartX);
   const currentPosY = useRef(initialStartY);
-  const currentPosZ = useRef(0);
-  const currentRotX = useRef(isMobileInit ? 0.08 : 0.12);
-  const currentRotY = useRef(0);
-  const currentRotZ = useRef(0);
-  const currentScale = useRef(0.021 * (isMobileInit ? 1.15 : isTabletInit ? 1.35 : 1.55));
+  const currentPosZ = useRef(-10.0);
+  const currentRotX = useRef((isMobileInit ? 0.08 : 0.12) + 0.3);
+  const currentRotY = useRef(Math.PI * 1.5);
+  const currentRotZ = useRef(-0.2);
+  const currentScale = useRef(0.0001);
 
-  // Initial entrance reveal refs (cinematic emergence on first arrival)
+  // Initial entrance reveal refs (cinematic emergence from behind on first arrival)
   const introStartTime = useRef<number | null>(null);
 
   // Extrusion settings strictly complying with architectural requirements
@@ -441,6 +442,7 @@ export default function LogoModel() {
   // Three.js Render Loop: Smooth physical damping, aerodynamic banking, and cursor parallax
   useFrame((state, delta) => {
     if (!meshGroupRef.current) return;
+    if (parts.length === 0) return;
 
     const progress = scrollProgressRef.current;
     const velocity = scrollVelocityRef.current;
@@ -448,19 +450,26 @@ export default function LogoModel() {
     // Evaluate continuous systematic choreography
     const target = evaluateChoreography(progress, maxX, viewport.width, { isMobile, isTablet });
 
-    // Initial entrance reveal timing (1.2s smooth emergence directly in hero stage)
+    // Initial entrance reveal timing: starts ONLY once 3D parts are loaded and ready
     if (introStartTime.current === null) {
       introStartTime.current = state.clock.elapsedTime;
     }
     const elapsed = state.clock.elapsedTime - introStartTime.current;
-    const introT = Math.min(1.0, elapsed / 1.2);
-    const introEase = 1.0 - Math.pow(1.0 - introT, 3);
+    const INTRO_DURATION = 1.6; // 1.6s smooth cinematic emergence from behind
+    const introT = Math.min(1.0, elapsed / INTRO_DURATION);
+    // Smooth quartic ease-out curve for swift forward momentum that settles gracefully
+    const introEase = 1.0 - Math.pow(1.0 - introT, 3.5);
     // If user starts scrolling, instantly complete the intro
     const effectiveIntro = progress > 0.01 ? 1.0 : introEase;
 
-    const introPosZ = (1.0 - effectiveIntro) * -0.6;
-    const introSpin = (1.0 - effectiveIntro) * 0.35;
-    const introScaleMult = THREE.MathUtils.lerp(0.85, 1.0, effectiveIntro);
+    // Coming from behind: Z travels from deep background (-10.0) to focal plane (0)
+    const introPosZ = (1.0 - effectiveIntro) * -10.0;
+    // Elegant gyroscopic unwinding spin as it swoops forward
+    const introSpin = (1.0 - effectiveIntro) * (Math.PI * 1.5);
+    const introRotX = (1.0 - effectiveIntro) * 0.3;
+    const introRotZ = (1.0 - effectiveIntro) * -0.2;
+    // Scale grows smoothly from tiny (0.001) up to full 1.0
+    const introScaleMult = THREE.MathUtils.lerp(0.001, 1.0, effectiveIntro);
 
     // Subtle kinetic spin boost on fast scroll flicks (natural fluid momentum)
     const kineticSpin = THREE.MathUtils.clamp(velocity * 0.0001, -0.6, 0.6);
@@ -502,13 +511,13 @@ export default function LogoModel() {
     );
     currentRotX.current = THREE.MathUtils.damp(
       currentRotX.current,
-      target.rotX - mouseTiltX,
+      target.rotX + introRotX - mouseTiltX,
       dampSpeed,
       delta
     );
     currentRotZ.current = THREE.MathUtils.damp(
       currentRotZ.current,
-      target.rotZ,
+      target.rotZ + introRotZ,
       dampSpeed,
       delta
     );
