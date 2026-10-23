@@ -52,14 +52,14 @@ export default function ServicesExplorer() {
     <div className="relative">
       {/* View Switcher: Interactive 3D Prism vs Blueprint Specs */}
       <div className="flex items-center justify-center mb-6 px-2">
-        <div className="flex items-center gap-1.5 rounded-full border border-white/30 bg-white/70 p-1 backdrop-blur-md shadow-xs">
+        <div className="flex items-center gap-1.5 rounded-full border border-white/60 bg-white/80 p-1.5 backdrop-blur-xl shadow-md ring-1 ring-black/[0.03]">
           <button
             type="button"
             onClick={() => setViewMode("cube")}
             className={`flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
               viewMode === "cube"
-                ? "bg-navy-950 text-white shadow-md"
-                : "text-navy-700 hover:text-navy-900"
+                ? "bg-navy-950 text-white shadow-md shadow-navy-950/20"
+                : "text-navy-700 hover:text-navy-950"
             }`}
           >
             <Box className="h-3.5 w-3.5 text-cyan-400" />
@@ -70,8 +70,8 @@ export default function ServicesExplorer() {
             onClick={() => setViewMode("blueprint")}
             className={`flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-semibold transition-all cursor-pointer ${
               viewMode === "blueprint"
-                ? "bg-navy-950 text-white shadow-md"
-                : "text-navy-700 hover:text-navy-900"
+                ? "bg-navy-950 text-white shadow-md shadow-navy-950/20"
+                : "text-navy-700 hover:text-navy-950"
             }`}
           >
             <Layers className="h-3.5 w-3.5 text-orange-400" />
@@ -81,7 +81,7 @@ export default function ServicesExplorer() {
       </div>
 
       {/* Category Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-surface-muted/80 backdrop-blur-md border border-navy-100 max-w-4xl mx-auto mb-8 sm:mb-10">
+      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-md ring-1 ring-black/[0.02] max-w-4xl mx-auto mb-8 sm:mb-10">
         {services.map((service) => {
           const isSelected = activeSlug === service.slug;
           const ServiceIcon = iconMap[service.icon] || Layers;
@@ -94,7 +94,7 @@ export default function ServicesExplorer() {
               transition={{ type: "spring", stiffness: 450, damping: 25 }}
               onClick={() => setActiveSlug(service.slug)}
               className={`relative flex items-center gap-1.5 sm:gap-2 rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 text-xs font-semibold sm:text-sm transition-colors duration-200 cursor-pointer ${
-                isSelected ? "text-white" : "text-navy-700 hover:text-navy-900 hover:bg-white/60"
+                isSelected ? "text-white" : "text-navy-700 hover:text-navy-950 hover:bg-white/80"
               }`}
             >
               {isSelected && (
@@ -115,23 +115,29 @@ export default function ServicesExplorer() {
 
       {/* Interactive Display: 3D Showcase Prism vs Detailed Blueprint Panel */}
       {viewMode === "cube" ? (
-        <div className="flex flex-col items-center">
+        <div className="relative flex flex-col items-center">
+          {/* Ambient stage glow behind 3D cube */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-gradient-to-tr from-cyan-500/15 via-orange-500/12 to-transparent blur-3xl"
+          />
+
           <ShowcaseCube
             activeServiceIndex={activeIndex}
             onServiceSelect={(idx) => setActiveSlug(services[idx].slug)}
           />
 
-          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full sm:w-auto px-4">
+          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full sm:w-auto px-4 relative z-10">
             <button
               type="button"
               onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-orange-500/25 transition-all hover:bg-orange-600 hover:shadow-orange-500/40 active:scale-95 cursor-pointer w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_20px_rgba(244,123,32,0.35)] transition-all hover:bg-orange-600 hover:shadow-[0_0_30px_rgba(244,123,32,0.5)] active:scale-95 cursor-pointer w-full sm:w-auto"
             >
               Discuss {activeService.short} Goals <ArrowRight className="h-4 w-4" />
             </button>
             <Link
               href={`/services/${activeService.slug}`}
-              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-navy-200 bg-white/70 px-5 py-3 text-sm font-semibold text-navy-800 backdrop-blur-md transition-colors hover:border-orange-400 hover:text-orange-600 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-navy-200 bg-white/80 px-5 py-3 text-sm font-semibold text-navy-800 backdrop-blur-md transition-colors hover:border-orange-400 hover:text-orange-600 shadow-sm w-full sm:w-auto"
             >
               Full Service Blueprint
             </Link>
@@ -145,7 +151,7 @@ export default function ServicesExplorer() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="overflow-hidden rounded-3xl border border-white/50 bg-white/75 shadow-xl backdrop-blur-md"
+            className="overflow-hidden rounded-3xl border border-white/60 bg-white/85 shadow-2xl backdrop-blur-xl ring-1 ring-black/[0.03]"
           >
             <div className="grid lg:grid-cols-12">
               {/* Left Column: Hook, Lead, What We Do */}

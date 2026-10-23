@@ -1,10 +1,12 @@
 import Section, { SectionHeading } from "@/components/Section";
-import PageHero from "@/components/PageHero";
+import ServicesHero from "@/components/ServicesHero";
+import ServicesTicker from "@/components/ServicesTicker";
 import ServiceCard from "@/components/ServiceCard";
 import ServicesExplorer from "@/components/ServicesExplorer";
-//import InteractiveAudit from "@/components/InteractiveAudit";
+import DotMatrixRibbon from "@/components/3d/DotMatrixRibbon";
 import CTASection from "@/components/CTASection";
 import JsonLd from "@/components/JsonLd";
+import SmoothScroll from "@/components/providers/SmoothScroll";
 import { services } from "@/lib/site";
 import { pageMeta, breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
 
@@ -26,7 +28,7 @@ export const metadata = pageMeta({
 
 export default function ServicesPage() {
   return (
-    <>
+    <SmoothScroll>
       <JsonLd
         data={[
           breadcrumbJsonLd([{ name: "Services", path: "/services" }]),
@@ -39,46 +41,52 @@ export default function ServicesPage() {
         ]}
       />
 
-      <PageHero
-        title="Our Digital Marketing Services"
-        crumbs={[{ name: "Services", path: "/services" }]}
-      />
+      {/* 01. Modern Cinematic Services Hero (Shares exact landing page vibe) */}
+      <ServicesHero />
 
-      {/* Interactive Explorer View */}
-      <Section>
-        <SectionHeading
-          kicker="Coordinated Discipline"
-          title="Strategy and Execution Under One Roof"
-          description="Our six core services cover brand marketing, website design and development, social media, PPC, data analysis, and organic SEO. This allows us to coordinate different marketing activities around shared business goals across UK and international markets."
-        />
+      {/* 02. Continuous Animated Services Ticker Strip */}
+      <ServicesTicker />
 
-        <div className="mt-12">
+      {/* 03. Interactive Explorer View */}
+      <Section tone="white" id="explorer">
+        <div className="mx-auto max-w-3xl rounded-3xl border border-white/60 bg-white/70 p-6 sm:p-8 backdrop-blur-md shadow-sm text-center">
+          <SectionHeading
+            kicker="Coordinated Discipline"
+            title="Strategy and Execution Under One Roof"
+            description="Our six core services cover brand marketing, website design and development, social media, PPC, data analysis, and organic SEO. This allows us to coordinate different marketing activities around shared business goals across UK and international markets."
+          />
+        </div>
+
+        <div className="mt-10 sm:mt-12">
           <ServicesExplorer />
         </div>
       </Section>
 
-      {/* Grid of All 6 Services */}
-      <Section tone="muted">
-        <SectionHeading
-          kicker="Complete Directory"
-          title="Explore Individual Disciplines"
-          description="Deep-dive into each service to review what customers receive, our 4-phase delivery framework, and the concrete outcomes you can expect."
-        />
+      {/* 04. Signature Creative LED Typography Ribbon */}
+      <DotMatrixRibbon
+        text="BRAND MARKETING · WEBSITE DEVELOPMENT · SOCIAL MEDIA · PPC PERFORMANCE · DATA ANALYSIS · ORGANIC SEO · UK & INTERNATIONAL · "
+        speed={0.9}
+      />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* 05. Complete Directory Grid of All 6 Disciplines */}
+      <Section tone="navy" id="directory">
+        <div className="mx-auto max-w-3xl rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8 backdrop-blur-md shadow-sm text-center">
+          <SectionHeading
+            light
+            kicker="Complete Directory"
+            title="Explore Individual Disciplines"
+            description="Deep-dive into each service to review what customers receive, our 4-phase delivery framework, and the concrete outcomes you can expect."
+          />
+        </div>
+
+        <div className="mt-10 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => (
             <ServiceCard key={service.slug} service={service} index={i} />
           ))}
         </div>
       </Section>
 
-      {/* Interactive Growth Calculator */}
-      {/* <section className="py-12 sm:py-16">
-        <div className="container-page">
-          <InteractiveAudit />
-        </div>
-      </section> */}
-
+      {/* 06. High-Impact Conversion Band */}
       <CTASection
         title={
           <>
@@ -87,6 +95,6 @@ export default function ServicesPage() {
         }
         description="Book a free consultation to discuss your commercial goals and explore the right approach for your business."
       />
-    </>
+    </SmoothScroll>
   );
 }
