@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
   TrendingUp,
@@ -14,18 +13,6 @@ import {
 } from "lucide-react";
 import SocialIcon from "../SocialIcon";
 import ConsultationModal from "../ConsultationModal";
-
-const SocialFollowers3DStream = dynamic(
-  () => import("./SocialFollowers3DStream"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="absolute inset-0 flex items-center justify-center opacity-30">
-        <div className="h-0.5 w-64 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" />
-      </div>
-    ),
-  }
-);
 
 interface SocialPlatformData {
   id: "instagram" | "tiktok" | "linkedin" | "facebook";
@@ -136,9 +123,6 @@ export default function SocialFollowersRibbon({ className }: { className?: strin
           className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
           aria-hidden="true"
         />
-
-        {/* 3D Kinetic Background Particle Stream */}
-        <SocialFollowers3DStream />
 
         {/* Left & Right feathered gradient entry/exit masks */}
         <div
