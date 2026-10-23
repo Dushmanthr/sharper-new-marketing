@@ -9,7 +9,7 @@ import { type Testimonial } from "../Testimonials";
 const accentColors = [
   "#FF6A00", // 1. Brand Strategy: Electric Orange
   "#00E5FF", // 2. Web & Social: Cyan / Sea-Teal
-  "#F59E0B", // 3. PPC & SEO: Amber
+  "#F59E0B", // 3. Follower Growth & SEO: Amber
   "#A855F7", // 4. Healthcare / Clinical: Purple
   "#3B82F6", // 5. International Advisory: Royal Blue
   "#10B981", // 6. E-Commerce / Performance: Emerald

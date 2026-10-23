@@ -52,7 +52,7 @@ export default function BlogExplorer({ posts, categories }: BlogExplorerProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search guides, strategies, SEO, PPC..."
+              placeholder="Search guides, strategies, SEO, Social Followers..."
               className="w-full rounded-2xl border border-navy-100 bg-surface-muted/60 py-2.5 pl-11 pr-4 text-xs sm:text-sm text-navy-900 placeholder-navy-400 focus:border-orange-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-orange-500/20 transition-all"
             />
           </div>

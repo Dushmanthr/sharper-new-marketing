@@ -88,7 +88,7 @@ export function organizationJsonLd() {
       "Brand marketing and branding",
       "Website design and development",
       "Social media marketing",
-      "Pay-per-click advertising (PPC)",
+      "Social media followers increasing (Facebook, Instagram, LinkedIn, TikTok)",
       "Marketing data analysis",
       "Organic search engine optimisation (SEO)",
       "Lead generation",

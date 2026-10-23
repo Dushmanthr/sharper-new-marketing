@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
     ],
     relatedServices: [
       { name: "Data Analysis", slug: "data-analysis" },
-      { name: "Pay-Per-Click (PPC)", slug: "pay-per-click" },
+      { name: "Social Media Followers Increasing", slug: "social-media-followers" },
       { name: "Organic SEO", slug: "organic-seo" },
     ],
   },
@@ -193,7 +193,7 @@ export const blogPosts: BlogPost[] = [
           "Brand Positioning: Defining a crisp, memorable identity that sets your company apart from legacy competitors.",
           "High-Conversion Website: Ensuring your site is lightning fast, mobile-optimized, and engineered to guide visitors to take action.",
           "Organic SEO: Capturing high-intent commercial searches from buyers who are actively seeking your services.",
-          "Targeted PPC: Running tightly controlled Google and LinkedIn ads to generate immediate qualified enquiries.",
+          "Social Media Follower Growth: Expanding targeted, engaged audiences across Facebook, Instagram, LinkedIn, and TikTok to build brand authority and trust.",
           "Purposeful Social Media: Nurturing professional credibility and engagement where your target decision-makers spend time.",
           "Actionable Data Analysis: Monitoring real conversion metrics to continuously improve campaigns over time.",
         ],
@@ -202,7 +202,7 @@ export const blogPosts: BlogPost[] = [
         id: "budget-allocation",
         heading: "Realistic Budget Allocation Strategies",
         paragraphs: [
-          "A balanced allocation model for growing UK firms typically divides resources into a 60/40 ratio: 60% dedicated to long-term brand equity and organic search authority (SEO and content), and 40% allocated toward immediate demand generation (paid search and targeted performance campaigns).",
+          "A balanced allocation model for growing UK firms typically divides resources into a 60/40 ratio: 60% dedicated to long-term brand equity and organic search authority (SEO and content), and 40% allocated toward immediate demand generation (social follower growth and targeted performance campaigns).",
           "This dual approach ensures you capture immediate revenue opportunities today while insulating your business against rising ad costs tomorrow.",
         ],
         keyTakeaways: [
@@ -215,7 +215,7 @@ export const blogPosts: BlogPost[] = [
         id: "avoiding-pitfalls",
         heading: "Common Pitfalls UK SMEs Must Avoid",
         paragraphs: [
-          "The most frequent error is treating digital marketing as a series of isolated tasks handed to separate freelancers who never communicate with one another. When your SEO specialist, web developer, and PPC manager pull in different directions, budgets are diluted and brand messaging becomes fragmented.",
+          "The most frequent error is treating digital marketing as a series of isolated tasks handed to separate freelancers who never communicate with one another. When your SEO specialist, web developer, and social growth manager pull in different directions, budgets are diluted and brand messaging becomes fragmented.",
           "Coordinating strategy and execution under one unified consultancy ensures every marketing activity directly supports shared commercial goals.",
         ],
       },
@@ -489,7 +489,7 @@ export const blogPosts: BlogPost[] = [
     ],
     relatedServices: [
       { name: "Brand Marketing", slug: "brand-marketing" },
-      { name: "Pay-Per-Click (PPC)", slug: "pay-per-click" },
+      { name: "Social Media Followers Increasing", slug: "social-media-followers" },
       { name: "Data Analysis", slug: "data-analysis" },
     ],
   },

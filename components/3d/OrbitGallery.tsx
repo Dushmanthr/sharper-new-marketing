@@ -41,10 +41,10 @@ const orbitItems: OrbitItem[] = [
   {
     id: "orbit-2",
     slug: caseStudies[1]?.slug ?? "sustainable-lifestyle-ecommerce-scale",
-    title: "Sustainable D2C E-Commerce Brand Growth",
+    title: "Multi-Platform Social Follower Growth",
     category: "E-commerce & Retail",
-    metric: "3.8x",
-    metricLabel: "Return On Ad Spend",
+    metric: "+250K",
+    metricLabel: "New Social Followers",
     timeframe: "6 Months",
     accentColor: "#00E5FF",
   },

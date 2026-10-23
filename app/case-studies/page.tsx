@@ -17,7 +17,7 @@ export const metadata = pageMeta({
     "digital marketing case studies",
     "B2B marketing results UK",
     "SEO case studies",
-    "PPC ROI examples",
+    "social media follower growth case studies",
     "Sharper Labs Marketing results",
   ],
 });

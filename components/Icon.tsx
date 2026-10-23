@@ -9,6 +9,8 @@ import {
   MessageSquare,
   LayoutTemplate,
   TrendingUp,
+  UserPlus,
+  Users,
   CheckCircle2,
   type LucideIcon,
 } from "lucide-react";
@@ -24,6 +26,8 @@ const map: Record<string, LucideIcon> = {
   MessageSquare,
   LayoutTemplate,
   TrendingUp,
+  UserPlus,
+  Users,
 };
 
 export default function Icon({

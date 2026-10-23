@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Sharper Labs Marketing",
   },
   description:
-    "Sharper Labs Marketing is a UK-based digital marketing consultancy serving clients across the UK and internationally with brand marketing, website design and development, social media marketing, PPC, data analysis and organic SEO.",
+    "Sharper Labs Marketing is a UK-based digital marketing consultancy serving clients across the UK and internationally with brand marketing, website design and development, social media marketing, social media followers increasing, data analysis and organic SEO.",
   keywords: [
     "Digital marketing agency UK",
     "Digital marketing consultancy UK",
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     "Brand marketing agency UK",
     "Website design agency UK",
     "Social media marketing agency UK",
+    "Social media followers increasing UK",
     "Organic SEO services UK",
-    "PPC agency UK",
     "Marketing data analysis services",
   ],
   authors: [{ name: site.legalName }],

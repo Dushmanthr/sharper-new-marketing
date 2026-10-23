@@ -50,10 +50,10 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
           <div className="absolute w-48 h-48 rounded-full border border-cyan-400/20 animate-pulse" />
         </div>
 
-        <div className="container-page relative z-10 pt-8 sm:pt-14 md:pt-16 lg:pt-20 pb-8 sm:pb-14 md:pb-16 text-center">
+        <div className="container-page relative z-10 pt-7 sm:pt-14 md:pt-16 lg:pt-20 pb-7 sm:pb-14 md:pb-16 text-center">
           {/* Live Pill Beacon Badge */}
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-semibold text-orange-300 backdrop-blur-md shadow-[0_0_20px_rgba(249,115,22,0.15)] max-w-full">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-orange-300 backdrop-blur-md shadow-[0_0_20px_rgba(249,115,22,0.15)] max-w-full">
               <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
@@ -67,7 +67,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
 
           {/* Display Heading with Gradient Clip */}
           <Reveal delay={0.05}>
-            <h1 className="mt-3.5 sm:mt-5 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight text-white">
+            <h1 className="mt-3 sm:mt-5 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.14] tracking-tight text-white max-w-4xl mx-auto break-words">
               {service.title.split(" ").slice(0, -1).join(" ")}{" "}
               <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 bg-clip-text text-transparent drop-shadow-xs">
                 {service.title.split(" ").slice(-1)[0]}
@@ -77,7 +77,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
 
           {/* Lead Narrative */}
           <Reveal delay={0.1}>
-            <p className="mx-auto mt-3.5 sm:mt-4 max-w-2xl text-xs xs:text-sm sm:text-base lg:text-lg leading-relaxed text-navy-100">
+            <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-xs xs:text-sm sm:text-base lg:text-lg leading-relaxed text-navy-100">
               {service.lead}
             </p>
           </Reveal>
@@ -86,28 +86,28 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
           <Reveal delay={0.12}>
             <nav
               aria-label="Breadcrumb"
-              className="mt-3.5 sm:mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 sm:px-4 py-1 sm:py-1.5 text-[11px] sm:text-xs text-navy-200 backdrop-blur-md shadow-sm"
+              className="mt-3 sm:mt-4 inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs text-navy-200 backdrop-blur-md shadow-sm max-w-full overflow-hidden"
             >
-              <Link href="/" className="transition-colors hover:text-orange-400">
+              <Link href="/" className="transition-colors hover:text-orange-400 shrink-0">
                 Home
               </Link>
-              <ChevronRight className="h-3.5 w-3.5 text-navy-400" />
-              <Link href="/services" className="transition-colors hover:text-orange-400">
+              <ChevronRight className="h-3.5 w-3.5 text-navy-400 shrink-0" />
+              <Link href="/services" className="transition-colors hover:text-orange-400 shrink-0">
                 Services
               </Link>
-              <ChevronRight className="h-3.5 w-3.5 text-navy-400" />
-              <span className="font-semibold text-orange-400">{service.short}</span>
+              <ChevronRight className="h-3.5 w-3.5 text-navy-400 shrink-0" />
+              <span className="font-semibold text-orange-400 truncate">{service.short}</span>
             </nav>
           </Reveal>
 
           {/* Action CTA Buttons */}
           <Reveal delay={0.15}>
-            <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-4">
+            <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 w-full max-w-md mx-auto sm:max-w-none px-2 sm:px-0">
               {/* Modern Consultation Modal Trigger */}
               <button
                 type="button"
                 onClick={() => setIsModalOpen(true)}
-                className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2.5 overflow-hidden rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-amber-500 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(244,123,32,0.35)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_35px_rgba(244,123,32,0.55)] active:scale-[0.98] cursor-pointer"
+                className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2.5 overflow-hidden rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-amber-500 px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_0_25px_rgba(244,123,32,0.35)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_35px_rgba(244,123,32,0.55)] active:scale-[0.98] cursor-pointer"
               >
                 {/* Subtle light sweep animation */}
                 <span
@@ -117,17 +117,17 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                   <span className="absolute -inset-full top-0 block -translate-x-full transform bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
                 </span>
 
-                <Calendar className="h-4 w-4 text-white transition-transform duration-300 group-hover:scale-110" />
+                <Calendar className="h-4 w-4 text-white transition-transform duration-300 group-hover:scale-110 shrink-0" />
                 <span>Discuss Your {service.short} Goals</span>
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 shrink-0" />
               </button>
 
               {/* Direct Telephone Contact Button */}
               <a
                 href={site.phoneHref}
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/15 hover:border-white/30 shadow-md"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/15 hover:border-white/30 shadow-md active:scale-[0.98]"
               >
-                <Phone className="h-4 w-4 text-orange-400" />
+                <Phone className="h-4 w-4 text-orange-400 shrink-0" />
                 <span>{site.phoneIntl}</span>
               </a>
             </div>
@@ -135,36 +135,36 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
 
           {/* Live Credentials Bar — Frosted Glass Cards */}
           <Reveal delay={0.2}>
-            <div className="mt-8 sm:mt-12 lg:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3.5 max-w-5xl mx-auto border-t border-white/10 pt-5 sm:pt-8 text-center">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 sm:p-4 backdrop-blur-md transition-all hover:bg-white/[0.08] hover:border-white/20">
-                <span className="font-display text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <div className="mt-7 sm:mt-12 lg:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-2.5 sm:gap-3.5 max-w-5xl mx-auto border-t border-white/10 pt-5 sm:pt-8 text-center">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 xs:p-3 sm:p-4 backdrop-blur-md transition-all hover:bg-white/[0.08] hover:border-white/20">
+                <span className="font-display text-base xs:text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">
                   4-Phase
                 </span>
-                <p className="text-[10px] sm:text-xs text-navy-200 font-medium mt-1 leading-tight sm:leading-snug">
+                <p className="text-[9px] xs:text-[10px] sm:text-xs text-navy-200 font-medium mt-0.5 sm:mt-1 leading-tight sm:leading-snug">
                   Structured Framework
                 </p>
               </div>
-              <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.06] p-3 sm:p-4 backdrop-blur-md shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-all hover:bg-orange-500/[0.12] hover:border-orange-500/30">
-                <span className="font-display text-lg sm:text-2xl lg:text-3xl font-bold text-orange-400 tracking-tight">
+              <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.06] p-2.5 xs:p-3 sm:p-4 backdrop-blur-md shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-all hover:bg-orange-500/[0.12] hover:border-orange-500/30">
+                <span className="font-display text-base xs:text-lg sm:text-2xl lg:text-3xl font-bold text-orange-400 tracking-tight">
                   100%
                 </span>
-                <p className="text-[10px] sm:text-xs text-orange-200/90 font-medium mt-1 leading-tight sm:leading-snug">
+                <p className="text-[9px] xs:text-[10px] sm:text-xs text-orange-200/90 font-medium mt-0.5 sm:mt-1 leading-tight sm:leading-snug">
                   Data-Informed Strategy
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 sm:p-4 backdrop-blur-md transition-all hover:bg-white/[0.08] hover:border-white/20">
-                <span className="font-display text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 xs:p-3 sm:p-4 backdrop-blur-md transition-all hover:bg-white/[0.08] hover:border-white/20">
+                <span className="font-display text-base xs:text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">
                   UK & Global
                 </span>
-                <p className="text-[10px] sm:text-xs text-navy-200 font-medium mt-1 leading-tight sm:leading-snug">
+                <p className="text-[9px] xs:text-[10px] sm:text-xs text-navy-200 font-medium mt-0.5 sm:mt-1 leading-tight sm:leading-snug">
                   Senior Consultancy Team
                 </p>
               </div>
-              <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.06] p-3 sm:p-4 backdrop-blur-md shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-all hover:bg-orange-500/[0.12] hover:border-orange-500/30">
-                <span className="font-display text-lg sm:text-2xl lg:text-3xl font-bold text-orange-400 tracking-tight">
+              <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.06] p-2.5 xs:p-3 sm:p-4 backdrop-blur-md shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-all hover:bg-orange-500/[0.12] hover:border-orange-500/30">
+                <span className="font-display text-base xs:text-lg sm:text-2xl lg:text-3xl font-bold text-orange-400 tracking-tight">
                   Measurable
                 </span>
-                <p className="text-[10px] sm:text-xs text-orange-200/90 font-medium mt-1 leading-tight sm:leading-snug">
+                <p className="text-[9px] xs:text-[10px] sm:text-xs text-orange-200/90 font-medium mt-0.5 sm:mt-1 leading-tight sm:leading-snug">
                   Commercial Outcomes
                 </p>
               </div>

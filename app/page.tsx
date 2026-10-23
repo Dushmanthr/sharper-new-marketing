@@ -49,7 +49,7 @@ const homeFaqs = [
   {
     question: "What does Sharper Labs Marketing do?",
     answer:
-      "Sharper Labs Marketing is a UK-based digital marketing consultancy serving clients across the UK and internationally. We bring brand strategy, website development, paid advertising (PPC), social media, data analysis, and organic SEO together to help businesses make smarter marketing decisions.",
+      "Sharper Labs Marketing is a UK-based digital marketing consultancy serving clients across the UK and internationally. We bring brand strategy, website development, social media followers increasing (Instagram, TikTok, LinkedIn, Facebook), social media marketing, data analysis, and organic SEO together to help businesses make smarter marketing decisions.",
   },
   {
     question: "Do you work with international clients as well as UK companies?",
@@ -59,7 +59,7 @@ const homeFaqs = [
   {
     question: "Do you offer individual services or a fully coordinated strategy?",
     answer:
-      "Both. Whether you need support with a single discipline (such as a website rebuild, an SEO campaign, or PPC management) or an integrated multi-channel marketing strategy under one roof, our flexible model accommodates your exact business goals.",
+      "Both. Whether you need support with a single discipline (such as a website rebuild, an SEO campaign, or social media follower growth) or an integrated multi-channel marketing strategy under one roof, our flexible model accommodates your exact business goals.",
   },
   {
     question: "How do you measure success and return on investment?",
@@ -114,7 +114,7 @@ const whyPartnerPillars = [
   },
   {
     title: "Strategy and Execution Under One Roof",
-    text: "Our six core services cover brand marketing, website design and development, social media, PPC, data analysis, and organic SEO, allowing us to coordinate different marketing activities around shared business goals.",
+    text: "Our six core services cover brand marketing, website design and development, social media, social media followers increasing, data analysis, and organic SEO, allowing us to coordinate different marketing activities around shared business goals.",
     icon: Layers,
   },
   {
@@ -274,7 +274,7 @@ export default function Home() {
 
       {/* Signature Creative LED Typography Ticker (Inspired by Nudot) */}
       <DotMatrixRibbon
-        text="SHARPER LABS · CREATIVE DIGITAL AGENCY · BRAND IDENTITY · UI/UX DEVELOPMENT · ENTERPRISE SEO · PPC PERFORMANCE · UK & INTERNATIONAL · "
+        text="SHARPER LABS · CREATIVE DIGITAL AGENCY · BRAND IDENTITY · UI/UX DEVELOPMENT · ENTERPRISE SEO · FOLLOWER GROWTH · UK & INTERNATIONAL · "
         speed={1.0}
       />
 

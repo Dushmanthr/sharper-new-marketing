@@ -32,11 +32,11 @@ const goals = [
     tagline: "Compounding Organic Inflows",
   },
   {
-    id: "roas",
-    label: "Lower CPA & Higher Paid Ad ROAS",
+    id: "followers",
+    label: "Rapid Social Media Follower Growth",
     multiplier: 3.5,
-    time: "60–90 days",
-    tagline: "Elimination of Wasted Spend",
+    time: "30–60 days",
+    tagline: "Real Followers on IG, TikTok, LinkedIn & FB",
   },
   {
     id: "web",
