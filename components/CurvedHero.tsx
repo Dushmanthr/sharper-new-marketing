@@ -34,11 +34,11 @@ export default function CurvedHero({
         className="absolute right-10 top-1/3 h-80 w-80 rounded-full bg-orange-500/12 blur-[100px] pointer-events-none"
       />
 
-      <div className="container-page relative z-10 py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24">
+      <div className="container-page relative z-10 pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 pb-8 sm:pb-10 md:pb-12 lg:pb-14 xl:pb-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 xl:gap-14 items-center">
           
           {/* Left Column: Strategic Value Proposition & High-Converting Journey */}
-          <div className="md:col-span-7 xl:col-span-7 max-w-2xl">
+          <div className="md:col-span-7 xl:col-span-7 max-w-2xl md:-translate-y-4 lg:-translate-y-6 xl:-translate-y-7">
             {/* Mobile 3D Brand Emblem Stage: dedicated breathing space for 3D logo on mobile */}
             <div className="h-28 sm:h-32 w-full md:hidden relative flex items-center justify-center pointer-events-none mb-3">
               <div className="w-28 h-28 rounded-full border border-orange-500/20 border-dashed animate-[spin_40s_linear_infinite]" />
@@ -49,7 +49,7 @@ export default function CurvedHero({
           </div>
 
           {/* Right Column: Dedicated 3D Interactive Brand Centerpiece Stage */}
-          <div className="md:col-span-5 xl:col-span-5 flex flex-col items-center justify-center relative min-h-[360px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[540px] xl:min-h-[580px] pointer-events-none">
+          <div className="md:col-span-5 xl:col-span-5 flex flex-col items-center justify-center relative min-h-0 md:min-h-[460px] lg:min-h-[520px] xl:min-h-[560px] pointer-events-none">
             
             {/* Ambient 3D Stage Core Aura: Gives the 3D rotating logo an ethereal glowing halo behind it */}
             <div 
@@ -83,6 +83,12 @@ export default function CurvedHero({
 
         </div>
       </div>
+
+      {/* Subtle bottom fade for seamless transition to ticker */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-navy-950/60 to-transparent"
+      />
     </section>
   );
 }

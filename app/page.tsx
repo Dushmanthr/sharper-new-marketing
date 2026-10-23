@@ -174,7 +174,7 @@ export default function Home() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h1 className="mt-5 text-3xl font-bold leading-[1.14] sm:text-4xl lg:text-5xl tracking-tight">
+          <h1 className="mt-4 sm:mt-5 text-3xl font-bold leading-[1.14] sm:text-4xl lg:text-5xl tracking-tight">
             Digital Marketing That{" "}
             <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 bg-clip-text text-transparent drop-shadow-xs">
               Moves Your Business Forward
@@ -183,18 +183,18 @@ export default function Home() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg leading-relaxed text-navy-100">
+          <p className="mt-3.5 sm:mt-4 text-sm sm:text-base lg:text-lg leading-relaxed text-navy-100">
             Sharper Labs Marketing is a UK-based digital marketing consultancy helping
             businesses build stronger brands, reach the right audiences, and achieve sustainable
             growth across the UK and internationally.
           </p>
-          <p className="mt-3 text-xs sm:text-sm text-navy-200/80 hidden sm:block">
+          <p className="mt-2 text-xs sm:text-sm text-navy-200/80 hidden sm:block">
             From brand strategy and website development to paid advertising, social media, data analysis, and SEO, we bring strategy, creativity, and performance measurement together to help businesses make smarter marketing decisions.
           </p>
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Button
               href="/services"
               variant="primary"
@@ -217,7 +217,7 @@ export default function Home() {
 
         {/* Live Trust Metrics — Frosted Glass Cards */}
         <Reveal delay={0.2}>
-          <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-2 sm:gap-3 border-t border-white/10 pt-5 sm:pt-6">
+          <div className="mt-6 sm:mt-7 grid grid-cols-3 gap-2 sm:gap-3 border-t border-white/10 pt-4 sm:pt-5">
             <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-3 text-center backdrop-blur-md transition-all hover:bg-white/[0.08] hover:border-white/20">
               <span className="font-display text-lg sm:text-2xl font-bold text-white tracking-tight">6 Core</span>
               <p className="text-[10px] sm:text-[11px] text-navy-200 font-medium mt-0.5">Specialist Disciplines</p>
