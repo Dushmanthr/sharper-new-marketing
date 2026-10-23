@@ -481,6 +481,24 @@ export const services: Service[] = [
       "Zero bots or fake accounts—100% targeted, genuine growth",
       "Seamless integration with your overall marketing and sales funnel",
     ],
+    process: [
+      {
+        title: "Audience & Profile Audit",
+        description: "We analyze target demographics, competitor followings, profile conversion readiness, and bio hooks across channels.",
+      },
+      {
+        title: "Platform-Specific Growth Strategy",
+        description: "We blueprint custom viral content hooks, trend funnels, and targeted outreach cadences for Instagram, TikTok, LinkedIn, and Facebook.",
+      },
+      {
+        title: "Targeted Campaign Launch & Outreach",
+        description: "We deploy algorithmic distribution, niche demographic engagement, and verified audience outreach to accelerate real followers.",
+      },
+      {
+        title: "Retention & Compounding Scale",
+        description: "We optimize visitor-to-follower conversion, monitor daily audience quality, and scale compounding reach across your ecosystem.",
+      },
+    ],
     faqs: [
       {
         question: "Which social media platforms do you grow followers on?",

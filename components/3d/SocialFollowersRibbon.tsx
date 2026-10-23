@@ -98,8 +98,9 @@ const platforms: SocialPlatformData[] = [
   },
 ];
 
-// Double items so ticker stays continuously populated across all viewports
-const tickerPlatforms = [...platforms, ...platforms];
+// Quadruple items so 50% translation shift covers ~2400px, ensuring a 100% seamless infinite loop without visual jumps across all screen widths up to 4K
+const basePlatforms = [...platforms, ...platforms];
+const tickerPlatforms = [...basePlatforms, ...basePlatforms];
 
 export default function SocialFollowersRibbon({ className }: { className?: string }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -108,7 +109,7 @@ export default function SocialFollowersRibbon({ className }: { className?: strin
     <>
       <section
         aria-label="Social Media Follower Platforms Ribbon"
-        className={`relative z-20 w-full overflow-hidden border-y border-white/10 bg-gradient-to-b from-[#060b18]/95 via-[#0a1329]/90 to-[#060b18]/95 backdrop-blur-xl py-3.5 sm:py-5 select-none ${
+        className={`relative z-20 w-full overflow-hidden border-y border-white/10 bg-gradient-to-b from-[#060b18]/95 via-[#0a1329]/90 to-[#060b18]/95 backdrop-blur-xl py-2.5 sm:py-3.5 md:py-5 select-none ${
           className || ""
         }`}
       >
@@ -124,26 +125,26 @@ export default function SocialFollowersRibbon({ className }: { className?: strin
           aria-hidden="true"
         />
 
-        {/* Left & Right feathered gradient entry/exit masks */}
+        {/* Left & Right feathered gradient entry/exit masks - proportionally scaled for mobile, tablet, desktop */}
         <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 sm:w-32 bg-gradient-to-r from-[#060b18] via-[#060b18]/80 to-transparent"
+          className="pointer-events-none absolute inset-y-0 left-0 z-20 w-8 xs:w-14 sm:w-24 md:w-32 bg-gradient-to-r from-[#060b18] via-[#060b18]/80 to-transparent"
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 sm:w-32 bg-gradient-to-l from-[#060b18] via-[#060b18]/80 to-transparent"
+          className="pointer-events-none absolute inset-y-0 right-0 z-20 w-8 xs:w-14 sm:w-24 md:w-32 bg-gradient-to-l from-[#060b18] via-[#060b18]/80 to-transparent"
           aria-hidden="true"
         />
 
         {/* Infinite Interactive Ribbon */}
         <div className="ticker-fade-mask relative flex overflow-hidden">
-          <div className="animate-ticker flex items-center gap-3 sm:gap-4.5 py-1">
+          <div className="animate-ticker flex items-center gap-2.5 sm:gap-3.5 md:gap-4.5 py-1">
             {tickerPlatforms.map((item, idx) => {
               const SubIcon = item.subIcon;
               return (
                 <div
                   key={`${item.id}-${idx}`}
                   onClick={() => setIsModalOpen(true)}
-                  className={`group relative flex items-center gap-3.5 sm:gap-4 rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.05] p-3 sm:p-3.5 sm:pr-5 shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.1] hover:shadow-2xl cursor-pointer ${item.borderColor}`}
+                  className={`group relative flex items-center gap-2.5 sm:gap-3.5 md:gap-4 rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.05] p-2.5 sm:p-3 md:p-3.5 sm:pr-4 md:pr-5 shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.1] hover:shadow-2xl cursor-pointer shrink-0 active:scale-[0.98] select-none ${item.borderColor}`}
                   style={{
                     boxShadow: "0 8px 30px rgba(0, 0, 0, 0.35)",
                   }}
@@ -157,47 +158,47 @@ export default function SocialFollowersRibbon({ className }: { className?: strin
 
                   {/* Cute Social Media Icon Badge */}
                   <div
-                    className={`relative z-10 flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl text-white shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 ${item.iconBg}`}
+                    className={`relative z-10 flex h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl text-white shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 ${item.iconBg}`}
                   >
-                    <SocialIcon name={item.id} className="h-5 w-5 sm:h-6 sm:w-6" />
+                    <SocialIcon name={item.id} className="h-5 w-5 sm:h-5.5 sm:w-5.5 md:h-6 md:w-6" />
                   </div>
 
                   {/* Follower Stats & Platform Copy */}
-                  <div className="relative z-10 text-left min-w-[170px] sm:min-w-[190px]">
-                    <div className="flex items-center justify-between gap-2">
+                  <div className="relative z-10 text-left min-w-[155px] xs:min-w-[170px] sm:min-w-[185px] md:min-w-[195px]">
+                    <div className="flex items-center justify-between gap-1.5 sm:gap-2">
                       <span className="font-display text-xs sm:text-sm font-bold text-white tracking-wide flex items-center gap-1.5">
                         {item.name}
                         {/* Cute live radar ping */}
-                        <span className="relative flex h-2 w-2">
+                        <span className="relative flex h-2 w-2 shrink-0">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
                       </span>
 
                       {/* Cute reaction badge */}
-                      <span className="inline-flex items-center gap-1 text-[10px] font-medium text-white/70 bg-white/10 px-1.5 py-0.5 rounded-md backdrop-blur-xs">
+                      <span className="inline-flex items-center gap-1 text-[9px] xs:text-[10px] font-medium text-white/70 bg-white/10 px-1.5 py-0.5 rounded-md backdrop-blur-xs">
                         <span>{item.reactionEmoji}</span>
                         <span className="hidden xs:inline">{item.reactionLabel}</span>
                       </span>
                     </div>
 
                     {/* Follower Count Metric */}
-                    <div className="mt-1 flex items-baseline gap-1.5">
+                    <div className="mt-0.5 sm:mt-1 flex items-baseline gap-1 sm:gap-1.5">
                       <span
-                        className={`font-display text-base sm:text-lg font-extrabold tracking-tight ${item.accentText}`}
+                        className={`font-display text-sm xs:text-base sm:text-lg font-extrabold tracking-tight ${item.accentText}`}
                       >
                         {item.metric}
                       </span>
-                      <span className="text-[10px] sm:text-[11px] font-semibold text-white/80">
+                      <span className="text-[9px] xs:text-[10px] sm:text-[11px] font-semibold text-white/80">
                         {item.rate}
                       </span>
                     </div>
 
                     {/* Cute Micro-Avatar Stack & Subtitle */}
-                    <div className="mt-1.5 flex items-center justify-between gap-2 border-t border-white/10 pt-1.5 text-[10px] text-navy-200">
-                      <span className="truncate text-white/60">{item.tagline}</span>
+                    <div className="mt-1 sm:mt-1.5 flex items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-1 sm:pt-1.5 text-[9px] xs:text-[10px] text-navy-200">
+                      <span className="truncate text-white/60 max-w-[110px] xs:max-w-[130px] sm:max-w-none">{item.tagline}</span>
                       <span className="inline-flex items-center text-orange-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100 font-semibold shrink-0">
-                        Grow <ArrowUpRight className="h-3 w-3 ml-0.5" />
+                        Grow <ArrowUpRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 ml-0.5" />
                       </span>
                     </div>
                   </div>

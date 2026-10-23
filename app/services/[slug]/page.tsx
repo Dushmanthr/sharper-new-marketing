@@ -138,7 +138,7 @@ export default async function ServicePage({ params }: Params) {
           {/* Narrative Column */}
           <div>
             <span className="kicker">{service.kicker}</span>
-            <h2 className="mt-2.5 sm:mt-3 font-display text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 tracking-tight leading-tight">
+            <h2 className="mt-2.5 sm:mt-3 font-display text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-navy-900 tracking-tight leading-snug break-words">
               {service.lead}
             </h2>
 
@@ -172,7 +172,7 @@ export default async function ServicePage({ params }: Params) {
           />
         </div>
 
-        {/* Dynamic balanced grid: 4 items (4 cols), 5 items (3+2 balanced 6-col grid), 6 items (3 cols) */}
+        {/* Dynamic balanced grid: 4 items (4 cols), 5 items (balanced 2x2+1 on tablet, 3+2 on desktop), 6 items (3 cols) */}
         <div
           className={`mt-6 sm:mt-8 grid gap-3.5 sm:gap-5 ${
             whatWeDoCount === 4
@@ -183,17 +183,19 @@ export default async function ServicePage({ params }: Params) {
           }`}
         >
           {service.whatWeDo.map((item, idx) => {
-            // For 5 items: first 3 take span 2 (row 1), last 2 take span 3 (row 2)
+            // For 5 items: On tablet: 2 items row 1, 2 items row 2, 1 item row 3. On desktop: 3 items row 1 (span 2 each), 2 items row 2 (span 3 each).
             const colSpanClass =
               whatWeDoCount === 5
                 ? idx < 3
-                  ? "lg:col-span-2"
+                  ? "sm:col-span-1 lg:col-span-2"
+                  : idx === 3
+                  ? "sm:col-span-1 lg:col-span-3"
                   : "sm:col-span-2 lg:col-span-3"
                 : "";
 
             return (
               <Reveal key={idx} index={idx} className={`h-full ${colSpanClass}`}>
-                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/80 bg-white/95 p-5 sm:p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-orange-300 hover:shadow-xl">
+                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/80 bg-white/95 p-4 sm:p-5 md:p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-orange-300 hover:shadow-xl">
                   {/* Top specular glow line on hover */}
                   <div
                     aria-hidden="true"
@@ -201,10 +203,10 @@ export default async function ServicePage({ params }: Params) {
                   />
 
                   <div>
-                    <span className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-2xl border border-orange-500/20 bg-orange-500/10 text-orange-600 font-bold transition-all duration-300 group-hover:scale-105 group-hover:bg-orange-500 group-hover:text-white group-hover:shadow-[0_0_16px_rgba(244,123,32,0.4)] text-sm sm:text-base">
+                    <span className="flex h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 items-center justify-center rounded-2xl border border-orange-500/20 bg-orange-500/10 text-orange-600 font-bold transition-all duration-300 group-hover:scale-105 group-hover:bg-orange-500 group-hover:text-white group-hover:shadow-[0_0_16px_rgba(244,123,32,0.4)] text-xs sm:text-sm md:text-base">
                       0{idx + 1}
                     </span>
-                    <h3 className="mt-4 sm:mt-5 font-display text-base sm:text-lg font-bold text-navy-900 transition-colors duration-200 group-hover:text-orange-600">
+                    <h3 className="mt-3.5 sm:mt-4 md:mt-5 font-display text-sm sm:text-base md:text-lg font-bold text-navy-900 transition-colors duration-200 group-hover:text-orange-600">
                       {item.title}
                     </h3>
                     <p className="mt-2 text-xs sm:text-sm leading-relaxed text-ink-muted">
@@ -286,10 +288,10 @@ export default async function ServicePage({ params }: Params) {
           {/* Left Column: Our Strategic Approach */}
           <div>
             <span className="kicker">Strategic Delivery</span>
-            <h2 className="mt-2.5 sm:mt-3 font-display text-2xl xs:text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">
+            <h2 className="mt-2 sm:mt-2.5 font-display text-xl sm:text-3xl lg:text-4xl font-bold text-navy-900 tracking-tight">
               Our Strategic Approach
             </h2>
-            <div className="mt-3.5 sm:mt-4 rounded-3xl border border-white/80 bg-white/95 p-5 sm:p-7 shadow-sm backdrop-blur-md">
+            <div className="mt-3.5 sm:mt-4 rounded-3xl border border-white/80 bg-white/95 p-4 sm:p-6 md:p-7 shadow-sm backdrop-blur-md">
               <p className="text-xs sm:text-sm md:text-base leading-relaxed text-navy-800">
                 {service.approach}
               </p>
@@ -302,7 +304,7 @@ export default async function ServicePage({ params }: Params) {
             </div>
 
             {/* Quick Action Card */}
-            <div className="mt-4 sm:mt-5 rounded-3xl border border-orange-500/20 bg-gradient-to-br from-orange-500/[0.08] via-white to-transparent p-5 sm:p-6 shadow-sm backdrop-blur-sm">
+            <div className="mt-4 sm:mt-5 rounded-3xl border border-orange-500/20 bg-gradient-to-br from-orange-500/[0.08] via-white to-transparent p-4 sm:p-5 md:p-6 shadow-sm backdrop-blur-sm">
               <h4 className="font-display text-sm sm:text-base font-bold text-navy-900">
                 Ready to review your {service.short} requirements?
               </h4>
@@ -323,11 +325,11 @@ export default async function ServicePage({ params }: Params) {
           {/* Right Column: Commercial Deliverables */}
           <div>
             <span className="kicker text-emerald-600">Commercial Deliverables</span>
-            <h2 className="mt-2.5 sm:mt-3 font-display text-2xl xs:text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">
+            <h2 className="mt-2 sm:mt-2.5 font-display text-xl sm:text-3xl lg:text-4xl font-bold text-navy-900 tracking-tight">
               What You Can Expect
             </h2>
 
-            <div className="mt-3.5 sm:mt-4 rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.06] via-white to-emerald-500/[0.02] p-5 sm:p-7 shadow-sm backdrop-blur-sm">
+            <div className="mt-3.5 sm:mt-4 rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.06] via-white to-emerald-500/[0.02] p-4 sm:p-6 md:p-7 shadow-sm backdrop-blur-sm">
               <ul className="space-y-3 sm:space-y-3.5">
                 {service.whatYouCanExpect.map((expectItem, i) => (
                   <li key={i} className="flex items-start gap-2.5 sm:gap-3 text-xs sm:text-sm text-navy-900 font-medium leading-relaxed">
@@ -381,23 +383,27 @@ export default async function ServicePage({ params }: Params) {
           />
         </div>
 
-        {/* Balanced 3 + 2 layout across 6 columns: 3 on row 1, 2 on row 2 spanning full width */}
+        {/* Balanced layout across viewports: 1 col on mobile, 2x2+1 on tablet, 3+2 on desktop */}
         <div className="mt-6 sm:mt-8 grid gap-3.5 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-6">
           {otherServices.map((s, idx) => {
             const colSpanClass =
-              idx < 3 ? "lg:col-span-2" : "sm:col-span-2 lg:col-span-3";
+              idx < 3
+                ? "sm:col-span-1 lg:col-span-2"
+                : idx === 3
+                ? "sm:col-span-1 lg:col-span-3"
+                : "sm:col-span-2 lg:col-span-3";
 
             return (
               <Reveal key={s.slug} className={`h-full ${colSpanClass}`}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group relative flex h-full flex-col justify-between rounded-3xl border border-navy-100/80 bg-white p-5 sm:p-6 shadow-xs backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-lg"
+                  className="group relative flex h-full flex-col justify-between rounded-3xl border border-navy-100/80 bg-white p-4 sm:p-5 md:p-6 shadow-xs backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-lg"
                 >
                   <div>
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-orange-600">
                       {s.kicker}
                     </span>
-                    <h3 className="mt-1.5 font-display text-base sm:text-lg font-bold text-navy-900 transition-colors duration-200 group-hover:text-orange-600">
+                    <h3 className="mt-1.5 font-display text-sm sm:text-base md:text-lg font-bold text-navy-900 transition-colors duration-200 group-hover:text-orange-600">
                       {s.short}
                     </h3>
                     <p className="mt-1.5 text-xs sm:text-sm text-ink-muted leading-relaxed line-clamp-2">
