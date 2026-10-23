@@ -61,6 +61,8 @@ type SectionProps = {
   className?: string;
   /** background variant */
   tone?: "white" | "muted" | "navy";
+  /** tighter vertical padding to eliminate excessive blank space */
+  compact?: boolean;
 };
 
 export default function Section({
@@ -68,12 +70,14 @@ export default function Section({
   id,
   className,
   tone = "white",
+  compact = false,
 }: SectionProps) {
   return (
     <section
       id={id}
       className={clsx(
-        "py-16 sm:py-20 lg:py-24 transition-colors",
+        compact ? "py-8 sm:py-10 lg:py-12" : "py-10 sm:py-14 lg:py-16",
+        "transition-colors",
         tone === "white" && "bg-white/40 backdrop-blur-md",
         tone === "muted" && "bg-surface-muted/35 backdrop-blur-md",
         tone === "navy" && "bg-navy-950/45 text-white backdrop-blur-md",
