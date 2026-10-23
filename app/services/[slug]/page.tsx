@@ -10,6 +10,7 @@ import {
 import Section, { SectionHeading } from "@/components/Section";
 import ServiceDetailHero from "@/components/ServiceDetailHero";
 import ServiceBlueprintRibbon from "@/components/3d/ServiceBlueprintRibbon";
+import SocialFollowersRibbon from "@/components/3d/SocialFollowersRibbon";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
 import CTASection from "@/components/CTASection";
@@ -79,8 +80,12 @@ export default async function ServicePage({ params }: Params) {
       {/* 01. Modern Cinematic Service Detail Hero with Interactive Consultation Trigger */}
       <ServiceDetailHero service={service} />
 
-      {/* 02. Three.js Kinetic Blueprint Transition Stream */}
-      <ServiceBlueprintRibbon />
+      {/* 02. Three.js Kinetic Transition Stream / Social Followers Ribbon */}
+      {service.slug === "social-media-followers" || service.slug === "pay-per-click" ? (
+        <SocialFollowersRibbon />
+      ) : (
+        <ServiceBlueprintRibbon />
+      )}
 
       {/* 03. Strategic Overview & Lead Narrative */}
       <Section tone="white" compact className="relative overflow-hidden">
