@@ -12,7 +12,6 @@ import {
   Search,
   CheckCircle2,
   ArrowRight,
-  Sparkles,
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Box, Layers } from "lucide-react";
@@ -47,7 +46,7 @@ export default function ServicesExplorer() {
 
   const activeIndex = Math.max(0, services.findIndex((s) => s.slug === activeSlug));
   const activeService: Service = services[activeIndex] || services[0];
-  const IconComponent = iconMap[activeService.icon] || Sparkles;
+  const IconComponent = iconMap[activeService.icon] || Layers;
 
   return (
     <div className="relative">
@@ -85,7 +84,7 @@ export default function ServicesExplorer() {
       <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-surface-muted/80 backdrop-blur-md border border-navy-100 max-w-4xl mx-auto mb-8 sm:mb-10">
         {services.map((service) => {
           const isSelected = activeSlug === service.slug;
-          const ServiceIcon = iconMap[service.icon] || Sparkles;
+          const ServiceIcon = iconMap[service.icon] || Layers;
           return (
             <motion.button
               key={service.slug}

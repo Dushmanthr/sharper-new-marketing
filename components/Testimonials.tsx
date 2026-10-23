@@ -8,7 +8,6 @@ import {
   Star,
   TrendingUp,
   Quote,
-  Sparkles,
   MapPin,
   RotateCcw,
   Layers,
@@ -244,7 +243,7 @@ export default function Testimonials({
       <div className="relative z-10 mb-6 sm:mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between px-1 sm:px-4">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-xs font-semibold text-orange-400 backdrop-blur-md shadow-xs">
-            <Sparkles className="h-3.5 w-3.5 text-orange-400" />
+            <CheckCircle2 className="h-3.5 w-3.5 text-orange-400" />
             <span>Verified Client Evidence</span>
           </div>
           <h2 className="mt-2 font-display text-xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">

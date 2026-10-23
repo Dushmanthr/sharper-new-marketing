@@ -9,7 +9,6 @@ import {
   BarChart3,
   Search,
   ArrowUpRight,
-  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 import { services, type Service } from "@/lib/site";
@@ -50,7 +49,7 @@ export default function ServicesTicker() {
         <div className="animate-ticker flex items-center">
           {/* First Half */}
           {tickerItems.map((service, index) => {
-            const Icon = iconMap[service.icon] || Sparkles;
+            const Icon = iconMap[service.icon] || ArrowUpRight;
             return (
               <div
                 key={`half1-${service.slug}-${index}`}
@@ -85,12 +84,10 @@ export default function ServicesTicker() {
 
                 {/* Divider between cards */}
                 <div
-                  className="flex items-center gap-1.5 px-3 text-orange-500/40 select-none sm:px-4"
+                  className="flex items-center justify-center px-3 text-orange-500/40 select-none sm:px-4"
                   aria-hidden="true"
                 >
-                  <span className="h-1 w-1 rounded-full bg-orange-400/40" />
-                  <Sparkles className="h-2.5 w-2.5 text-orange-400/60" />
-                  <span className="h-1 w-1 rounded-full bg-orange-400/40" />
+                  <span className="h-1 w-1 rounded-full bg-orange-400/50" />
                 </div>
               </div>
             );
@@ -98,7 +95,7 @@ export default function ServicesTicker() {
 
           {/* Second Half (Exact mirror clone for continuous seamless loop) */}
           {tickerItems.map((service, index) => {
-            const Icon = iconMap[service.icon] || Sparkles;
+            const Icon = iconMap[service.icon] || ArrowUpRight;
             return (
               <div
                 key={`half2-${service.slug}-${index}`}
@@ -135,12 +132,10 @@ export default function ServicesTicker() {
 
                 {/* Divider between cards */}
                 <div
-                  className="flex items-center gap-1.5 px-3 text-orange-500/40 select-none sm:px-4"
+                  className="flex items-center justify-center px-3 text-orange-500/40 select-none sm:px-4"
                   aria-hidden="true"
                 >
-                  <span className="h-1 w-1 rounded-full bg-orange-400/40" />
-                  <Sparkles className="h-2.5 w-2.5 text-orange-400/60" />
-                  <span className="h-1 w-1 rounded-full bg-orange-400/40" />
+                  <span className="h-1 w-1 rounded-full bg-orange-400/50" />
                 </div>
               </div>
             );

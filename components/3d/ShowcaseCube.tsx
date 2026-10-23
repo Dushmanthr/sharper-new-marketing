@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Sparkles, Environment } from "@react-three/drei";
 import { services } from "@/lib/site";
-import { Move3d, Sparkles as SparklesIcon } from "lucide-react";
+import { Move3d } from "lucide-react";
 
 // Face configuration mapping for the 6 cube sides:
 // [ +X (Right), -X (Left), +Y (Top), -Y (Bottom), +Z (Front), -Z (Back) ]
