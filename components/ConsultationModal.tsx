@@ -690,7 +690,7 @@ Notes / Competitors: ${notes || "None"}`;
                           </>
                         ) : (
                           <>
-                            Generate Free Marketing Review <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            Free Marketing Review <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </>
                         )}
                       </span>
