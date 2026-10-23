@@ -251,7 +251,6 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* Case Studies */}
               <Link
                 href="/case-studies"
                 className={clsx(
@@ -262,6 +261,19 @@ export default function Header() {
                 )}
               >
                 Case Studies
+              </Link>
+
+              {/* Blogs */}
+              <Link
+                href="/blog"
+                className={clsx(
+                  "relative rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-200",
+                  isActive("/blog")
+                    ? "bg-orange-500/10 text-orange-600 font-semibold border border-orange-500/20 shadow-xs backdrop-blur-xs"
+                    : "text-navy-800 hover:text-orange-600 hover:bg-navy-900/[0.04]",
+                )}
+              >
+                Blogs
               </Link>
 
               <Link
@@ -442,6 +454,19 @@ export default function Header() {
                 )}
               >
                 Case Studies
+              </Link>
+
+              <Link
+                href="/blog"
+                onClick={() => setMobileOpen(false)}
+                className={clsx(
+                  "border-b border-navy-50 py-3 text-base font-medium transition-colors",
+                  isActive("/blog")
+                    ? "text-orange-600 font-semibold"
+                    : "text-navy-800 hover:text-orange-600",
+                )}
+              >
+                Blogs
               </Link>
 
               <Link
