@@ -1,7 +1,6 @@
-import { Clock, Phone, Mail, MapPin, Globe, CheckCircle2, Calendar } from "lucide-react";
+import { Clock, Phone, Mail, MapPin, Globe } from "lucide-react";
 import Section, { SectionHeading } from "@/components/Section";
 import ContactHero from "@/components/ContactHero";
-import ConsultationTriggerButton from "@/components/ConsultationTriggerButton";
 import Reveal from "@/components/Reveal";
 import EnquiryForm from "@/components/EnquiryForm";
 import JsonLd from "@/components/JsonLd";
@@ -183,26 +182,9 @@ export default function ContactPage() {
               </p>
             </div>
 
-            {/* Fast-Track Consultation Modal Booking Card */}
-            <div className="mt-8 rounded-3xl border border-orange-500/30 bg-gradient-to-br from-orange-500/10 via-white/[0.04] to-transparent p-5 sm:p-6 backdrop-blur-md shadow-lg">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-orange-400">
-                <Calendar className="h-4 w-4" /> Prefer an Interactive Scheduled Call?
-              </div>
-              <p className="mt-2 text-xs sm:text-sm text-navy-100 leading-relaxed">
-                Choose your timezone and preferred meeting slot in our interactive strategy booking modal.
-              </p>
-              <div className="mt-4">
-                <ConsultationTriggerButton
-                  label="Open Booking Modal"
-                  variant="primary"
-                  className="w-full sm:w-auto"
-                />
-              </div>
-            </div>
-
             {/* Overseas Enquirers Note */}
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5 text-xs text-navy-200 leading-relaxed">
-              <span className="font-semibold text-white">Overseas Enquirers:</span> If your business operates outside UK business hours, simply submit the form with your timezone or message us on WhatsApp, and we will arrange a convenient call time.
+            <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5 text-xs text-navy-200 leading-relaxed">
+              <span className="font-semibold text-white">Overseas Enquirers:</span> If your business operates outside UK business hours, simply submit the form with your timezon, and we will arrange a convenient call time.
             </div>
           </div>
 
