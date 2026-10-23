@@ -45,13 +45,17 @@ const FONT_5X7: Record<string, number[]> = {
   "·": [0b00000, 0b00000, 0b00000, 0b00100, 0b00000, 0b00000, 0b00000],
   "/": [0b00001, 0b00010, 0b00100, 0b00100, 0b01000, 0b10000, 0b00000],
   "-": [0b00000, 0b00000, 0b00000, 0b11111, 0b00000, 0b00000, 0b00000],
+  "&": [0b01100, 0b10010, 0b10100, 0b01000, 0b10101, 0b10010, 0b01101],
+  ".": [0b00000, 0b00000, 0b00000, 0b00000, 0b00000, 0b00110, 0b00110],
+  "!": [0b00100, 0b00100, 0b00100, 0b00100, 0b00000, 0b00000, 0b00100],
+  "?": [0b01110, 0b10001, 0b00001, 0b00010, 0b00100, 0b00000, 0b00100],
   " ": [0b00000, 0b00000, 0b00000, 0b00000, 0b00000, 0b00000, 0b00000],
 };
 
 const ROWS = 7;
-const COLS = 110;
-const SPACING_X = 0.16;
-const SPACING_Y = 0.16;
+const COLS = 136;
+const SPACING_X = 0.13;
+const SPACING_Y = 0.13;
 
 interface DotMatrixSceneProps {
   tickerText?: string;
@@ -113,9 +117,9 @@ function DotMatrixMesh({
       for (let c = 0; c < COLS; c++) {
         const idx = r * COLS + c;
         const x = (c - COLS / 2) * SPACING_X;
-        const y = (ROWS / 2 - r) * SPACING_Y;
+        const y = ((ROWS - 1) / 2 - r) * SPACING_Y;
         dummy.position.set(x, y, 0);
-        dummy.scale.setScalar(0.25);
+        dummy.scale.setScalar(0.22);
         dummy.updateMatrix();
         mesh.setMatrixAt(idx, dummy.matrix);
         mesh.setColorAt(idx, colors.dim);
@@ -147,7 +151,7 @@ function DotMatrixMesh({
         const isLit = columnsData[dataCol]?.[r] ?? false;
 
         const x = (c - COLS / 2) * SPACING_X - subColOffset;
-        const y = (ROWS / 2 - r) * SPACING_Y;
+        const y = ((ROWS - 1) / 2 - r) * SPACING_Y;
         // Subtle cylindrical wave depth for agency 3D curvature
         const z = Math.sin((c / COLS) * Math.PI) * 0.15;
 
@@ -183,7 +187,7 @@ function DotMatrixMesh({
       args={[undefined, undefined, count]}
       frustumCulled={false}
     >
-      <sphereGeometry args={[0.052, 10, 10]} />
+      <sphereGeometry args={[0.042, 10, 10]} />
       <meshBasicMaterial toneMapped={false} />
     </instancedMesh>
   );
