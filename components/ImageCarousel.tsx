@@ -3,23 +3,25 @@
 import Image from "next/image";
 import { motion, type PanInfo } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
     src: "/images/hero-marketing-team.jpg",
     alt: "Sharper Labs Marketing consultancy team in London office reviewing growth dashboard",
     pos: "object-center",
+    tag: "Strategic Consultancy",
   },
   {
     src: "/images/hero-data-analytics.jpg",
     alt: "Senior digital marketing strategist analyzing global performance analytics and search data",
     pos: "object-center",
+    tag: "Performance Analytics & SEO",
   },
   {
     src: "/images/hero-brand-design.jpg",
     alt: "Brand marketing and UI/UX design strategists collaborating on campaign prototypes",
     pos: "object-center",
+    tag: "Brand Experience & UI/UX",
   },
 ];
 
@@ -120,52 +122,38 @@ export default function ImageCarousel({ fill = false }: { fill?: boolean }) {
                   className={`object-cover ${slide.pos}`}
                   draggable={false}
                 />
+                {/* Subtle vignette gradient for depth */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-navy-950/20" />
               </motion.div>
+
+              {/* Slide Category Tag Pill */}
+              <div className="absolute top-3 left-3 z-20 pointer-events-none">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-navy-950/70 px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold text-white/95 backdrop-blur-md shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
+                  {slide.tag}
+                </span>
+              </div>
             </div>
           );
         })}
       </motion.div>
 
-      <motion.button
-        type="button"
-        onClick={goToPrevious}
-        whileHover={{ scale: 1.12 }}
-        whileTap={{ scale: 0.88 }}
-        transition={{ type: "spring", stiffness: 450, damping: 25 }}
-        suppressHydrationWarning
-        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white/80 p-2 text-navy-900 shadow-md backdrop-blur transition-colors hover:bg-white"
-        aria-label="Previous image"
-      >
-        <ChevronLeft className="h-5 w-5" />
-      </motion.button>
-
-      <motion.button
-        type="button"
-        onClick={goToNext}
-        whileHover={{ scale: 1.12 }}
-        whileTap={{ scale: 0.88 }}
-        transition={{ type: "spring", stiffness: 450, damping: 25 }}
-        suppressHydrationWarning
-        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white/80 p-2 text-navy-900 shadow-md backdrop-blur transition-colors hover:bg-white"
-        aria-label="Next image"
-      >
-        <ChevronRight className="h-5 w-5" />
-      </motion.button>
-
-      <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-1">
+      <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-navy-950/60 px-2.5 py-1 border border-white/10 backdrop-blur-md">
         {slides.map((slide, index) => (
           <button
             key={slide.src}
             type="button"
             onClick={() => goToIndex(index)}
             suppressHydrationWarning
-            className="flex cursor-pointer items-center justify-center p-2"
+            className="flex cursor-pointer items-center justify-center p-1"
             aria-label={`Show slide ${index + 1}`}
           >
             <span
               aria-hidden
-              className={`block h-2.5 rounded-full transition-all ${
-                index === currentIndex ? "w-6 bg-orange-400" : "w-2.5 bg-white/70"
+              className={`block h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? "w-6 bg-gradient-to-r from-orange-400 to-amber-300 shadow-[0_0_10px_rgba(249,115,22,0.8)]"
+                  : "w-2 bg-white/40 hover:bg-white/70"
               }`}
             />
           </button>
