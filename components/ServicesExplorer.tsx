@@ -12,6 +12,8 @@ import {
   Search,
   CheckCircle2,
   ArrowRight,
+  UserPlus,
+  Users,
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Box, Layers } from "lucide-react";
@@ -37,6 +39,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   MousePointerClick,
   BarChart3,
   Search,
+  UserPlus,
+  Users,
 };
 
 export default function ServicesExplorer() {

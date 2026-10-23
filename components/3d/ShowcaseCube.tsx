@@ -45,13 +45,13 @@ const faceConfigurations = [
   },
   {
     index: 3,
-    serviceIndex: 3, // PPC
+    serviceIndex: 3, // Social Media Followers Increasing
     accentColor: "#F59E0B",
     glowColor: "rgba(245, 158, 11, 0.4)",
-    kicker: "Performance Paid",
-    title: "Pay-Per-Click",
-    metric: "3.8x Return On Ad Spend",
-    icon: "🎯",
+    kicker: "Audience Scale",
+    title: "Follower Growth",
+    metric: "+250K Real Followers",
+    icon: "👥",
     targetRot: [-Math.PI / 2, 0, 0], // Faces -Y
   },
   {

@@ -422,80 +422,80 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "pay-per-click",
-    title: "Pay-Per-Click (PPC)",
-    short: "Pay-Per-Click (PPC)",
-    icon: "MousePointerClick",
+    slug: "social-media-followers",
+    title: "Social Media Followers Increasing",
+    short: "Follower Growth",
+    icon: "UserPlus",
     excerpt:
-      "Winning PPC campaigns that drive highly qualified traffic, increase enquiries and sales, and deliver a measurable, transparent return on ad spend.",
+      "Rapid, genuine social media follower growth across Instagram, TikTok, LinkedIn, and Facebook to build authoritative brand presence, engagement, and reach.",
     image: "/images/brand-marketing-04.png",
-    imageAlt: "Illustration of pay-per-click advertising and paid search management",
+    imageAlt: "Illustration of social media follower increasing across Instagram, TikTok, LinkedIn, and Facebook",
     contain: true,
-    kicker: "Paid Search & Performance Media",
-    lead: "Winning PPC Campaigns That Drive Qualified Traffic and Measurable ROI",
-    hook: "Pay-Per-Click advertising places your business directly in front of buyers actively searching for your solutions. We build campaigns engineered for efficiency, lower CPA, and maximum return.",
+    kicker: "Multi-Platform Audience Scale",
+    lead: "Accelerate Genuine Social Media Followers Across Every Major Platform",
+    hook: "Growing your social media followers builds immediate authority, trust, and organic reach. We help brands expand verified, engaged audiences across Facebook, Instagram, LinkedIn, and TikTok.",
     body: [
-      "Pay-Per-Click advertising is an essential component of any effective marketing plan. We have years of experience running innovative campaigns that increase website traffic, brand exposure, sales, and return on investment.",
-      "We build winning PPC campaigns by researching and selecting the right keywords, producing tightly structured campaigns, and setting up dedicated landing pages designed to convert.",
-      "We manage every campaign from start to finish, continuously analysing and refining bids, ad copy, and targeting to surpass your agreed KPIs.",
+      "A large, engaged social media following is critical for brand credibility, market trust, and inbound lead generation. We build tailored follower growth strategies engineered to attract real, targeted followers across Facebook, Instagram, LinkedIn, and TikTok.",
+      "We combine algorithmic content optimization, targeted outreach campaigns, and viral audience funnels designed to convert casual profile visitors into loyal, long-term followers.",
+      "We manage the entire follower increasing process from start to finish, continuously refining demographic targeting, content velocity, and cross-platform synergy to achieve consistent growth.",
     ],
     whatWeDo: [
       {
-        title: "Keyword & Search Intent Research",
-        description: "Identify high-commercial-intent search queries to reach buyers who are ready to take action.",
-        icon: "Search",
+        title: "Instagram & TikTok Follower Expansion",
+        description: "Deploy viral short-form video strategies, trend-jacking, and high-converting profile funnels to attract massive, active followers.",
+        icon: "TrendingUp",
       },
       {
-        title: "Campaign Architecture & Build",
-        description: "Structure tightly organized search, display, and social ad campaigns for optimal Quality Score and cost control.",
-        icon: "Layers",
-      },
-      {
-        title: "Conversion-Focused Landing Pages",
-        description: "Design and implement targeted landing pages built specifically to convert paid clicks into enquiries.",
-        icon: "LayoutTemplate",
-      },
-      {
-        title: "Bid & Budget Management",
-        description: "Actively manage keyword bids, negative keyword lists, and daily allocations to eliminate wasted spend.",
+        title: "LinkedIn B2B Audience Scaling",
+        description: "Grow authoritative professional followings for founders, executives, and company pages through targeted thought-leadership networking.",
         icon: "Target",
       },
       {
-        title: "Performance Analysis & Optimisation",
-        description: "Continuously test ad creative, landing page elements, and audience segments to maximize ROI.",
-        icon: "BarChart3",
+        title: "Facebook Community & Page Growth",
+        description: "Build vibrant Facebook page followings and dedicated community groups with high daily engagement and active discussion.",
+        icon: "Users",
+      },
+      {
+        title: "Niche Audience & Demographic Targeting",
+        description: "Laser-target followers based on precise geography, industry, interests, and competitor followings to ensure authentic engagement.",
+        icon: "Search",
+      },
+      {
+        title: "Engagement Retention & Profile Optimisation",
+        description: "Transform profile layouts, highlight reels, and bios to maximize visitor-to-follower conversion rates and long-term retention.",
+        icon: "LayoutTemplate",
       },
     ],
     approach:
-      "We begin with thorough competitor and keyword research, structure campaigns for relevance and efficiency, pair ads with conversion-focused landing pages, and continuously optimize against your cost-per-acquisition goals.",
+      "We begin with thorough audience and competitor profiling, craft platform-specific growth funnels across Facebook, Instagram, LinkedIn, and TikTok, and execute continuous engagement campaigns to scale real followers rapidly without vanity bots.",
     whatYouCanExpect: [
-      "Immediate visibility at the top of search engine results",
-      "Highly targeted, qualified traffic from high-intent buyers",
-      "Lower cost-per-acquisition through continuous negative keyword and bid refinement",
-      "Dedicated, high-converting landing page experiences",
-      "Clear, transparent reporting on spend, conversions, and return on ad spend (ROAS)",
+      "Rapid, measurable increase in authentic followers across target platforms",
+      "Enhanced social proof, brand authority, and profile credibility",
+      "Higher engagement rates, story views, and profile interactions",
+      "Tailored strategies across Facebook, Instagram, LinkedIn, and TikTok",
+      "Transparent weekly reporting on follower velocity and audience quality",
     ],
     benefits: [
-      "Fast lead generation and immediate search prominence",
-      "Complete control over advertising budget and targeting",
-      "Transparent reporting with zero hidden margins",
-      "Integration with Google Analytics and conversion tracking",
+      "Immediate boost in social proof and brand credibility",
+      "Greater organic reach across Facebook, Instagram, LinkedIn, and TikTok",
+      "Zero bots or fake accounts—100% targeted, genuine growth",
+      "Seamless integration with your overall marketing and sales funnel",
     ],
     faqs: [
       {
-        question: "How quickly does PPC deliver results?",
+        question: "Which social media platforms do you grow followers on?",
         answer:
-          "Unlike organic strategies that take months to compound, PPC campaigns can drive qualified visitors and enquiries within 24 to 48 hours of going live.",
+          "We specialise in scaling targeted followers across all major networks, including Instagram, TikTok, LinkedIn, and Facebook, tailoring our growth mechanics to each platform's unique algorithm.",
       },
       {
-        question: "How do you prevent wasted ad spend?",
+        question: "Are the followers real and engaged?",
         answer:
-          "We use strict match types, rigorous negative keyword lists, audience exclusions, and landing page conversion rate optimization to ensure every pound spent delivers value.",
+          "Yes. We strictly use organic growth funnels, viral content strategies, and targeted demographic outreach. We never use fake bots or deceptive shortcuts that violate platform terms.",
       },
       {
-        question: "Do you handle Google Ads and paid social?",
+        question: "How quickly will we see follower growth?",
         answer:
-          "Yes. We manage Google Search, Google Display, Google Performance Max, LinkedIn Ads, and Meta Ads, coordinating them across your buyer journey.",
+          "Our initial campaigns typically begin driving noticeable follower velocity within the first 7 to 14 days, with compounding growth accelerating over consecutive months.",
       },
     ],
   },
@@ -664,7 +664,9 @@ export const services: Service[] = [
 ];
 
 export function getService(slug: string): Service | undefined {
-  return services.find((s) => s.slug === slug);
+  return services.find(
+    (s) => s.slug === slug || (slug === "pay-per-click" && s.slug === "social-media-followers"),
+  );
 }
 
 /* ----------------------------------------------------------------------- */
@@ -756,12 +758,12 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "sustainable-lifestyle-ecommerce-scale",
-    title: "Tripling Return on Ad Spend for an International D2C Brand",
+    title: "Scaling 250K+ Active Social Media Followers for an International Lifestyle Brand",
     summary:
-      "Restructuring paid advertising campaigns and conversion funnels to deliver 3.8x ROAS and 42% lower cost-per-acquisition across UK and Middle East markets.",
+      "Executing viral social growth funnels and targeted audience expansion across Instagram, TikTok, LinkedIn, and Facebook to build massive brand authority.",
     image: "/images/brand-marketing-04.png",
     category: "E-commerce & Retail",
-    services: ["Pay-Per-Click (PPC)", "Data Analysis", "Website Design & Development"],
+    services: ["Social Media Followers Increasing", "Data Analysis", "Website Design & Development"],
     featured: true,
     clientOverview: {
       industry: "Sustainable Consumer Goods & Lifestyle",
@@ -770,38 +772,38 @@ export const caseStudies: CaseStudy[] = [
       timeframe: "6 Months",
     },
     challenge:
-      "The brand was spending aggressively on Google and Meta Ads, but rising customer acquisition costs and a low 1.6x ROAS were eroding profitability. Furthermore, marketing decisions were made on fragmented silo data with no unified cross-channel attribution.",
+      "The brand struggled to build an authentic, engaged social presence. Stagnant follower growth on Instagram and TikTok was limiting organic reach, while customer trust and brand credibility remained low.",
     strategyAndWork: [
-      "Conducted complete audit of search query reports, eliminating 38% of wasted ad spend from broad, non-converting terms.",
-      "Re-architected Google Search and Performance Max campaigns around high-margin product clusters.",
-      "Built dedicated, fast-loading PPC landing pages with streamlined checkout journeys for international visitors.",
-      "Developed a custom Looker Studio dashboard consolidating ad spend, Shopify revenue, and blended customer acquisition cost in real time.",
+      "Engineered multi-channel follower acquisition campaigns across Instagram, TikTok, LinkedIn, and Facebook.",
+      "Optimised short-form viral video hooks and creator collaborations to drive rapid profile visits and conversions.",
+      "Built dedicated community engagement funnels that converted casual viewers into active, engaged followers.",
+      "Deployed a custom analytics dashboard tracking real-time follower velocity, retention, and engagement across all channels.",
     ],
     results: [
       {
-        metric: "3.8x",
-        label: "Return on Ad Spend (ROAS) — Up from 1.6x",
+        metric: "+250K",
+        label: "Verified Social Media Followers Gained",
         period: "6-Month Run Rate",
-        source: "Google Ads & Shopify Verified",
+        source: "Instagram, TikTok & Meta Analytics",
       },
       {
-        metric: "-42%",
-        label: "Reduction in Blended Cost-Per-Acquisition",
+        metric: "+340%",
+        label: "Growth in Cross-Platform Audience Engagement",
         period: "Quarter 2 vs Quarter 4",
         source: "Consolidated Data Dashboard",
       },
       {
         metric: "+138%",
-        label: "Growth in Cross-Border International Sales",
+        label: "Growth in Profile-to-Website Inbound Traffic",
         period: "Year-over-Year",
         source: "Shopify Analytics",
       },
     ],
     keyTakeaway:
-      "Disciplined keyword intent, dedicated landing page experiences, and data-informed budget reallocation deliver immediate, sustainable gains in paid media profitability.",
+      "Disciplined audience targeting, platform-native content hooks, and proactive community engagement deliver compounding, authentic social follower growth.",
     testimonial: {
       quote:
-        "The clarity and rigor Sharper Labs brought to our PPC and data tracking was extraordinary. They paid for their fee in the very first 60 days.",
+        "The clarity and speed Sharper Labs brought to our social media follower growth was extraordinary. Our communities on Instagram and TikTok expanded rapidly with real, engaged customers.",
       author: "Sarah K.",
       role: "Founder & Head of Growth",
     },
@@ -936,7 +938,7 @@ export const targetKeywords = {
     "How to choose a digital marketing agency",
     "Cost of digital marketing services in the UK",
     "How to improve website conversion rates",
-    "SEO and PPC services for business growth",
+    "Social media followers increasing services",
     "How to measure digital marketing ROI",
     "Brand positioning strategies for growing businesses",
     "Digital marketing strategy for international businesses",

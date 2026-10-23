@@ -15,6 +15,7 @@ import {
   Palette,
   Code2,
   MousePointerClick,
+  UserPlus,
   Share2,
   Search,
   BarChart3,
@@ -44,7 +45,7 @@ export const testimonials: Testimonial[] = [
     company: "UK Retail Brand",
     location: "London, UK",
     metric: "+184% Online Enquiries",
-    service: "Brand Strategy & PPC",
+    service: "Brand Strategy & Follower Growth",
   },
   {
     quote:
@@ -57,12 +58,12 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "The PPC and SEO work Sharper Labs delivered paid for itself within months. They researched everything properly, kept refining the campaigns, and were always transparent about spend and results. A genuine marketing partner.",
+      "The social media follower growth work Sharper Labs delivered across Instagram, TikTok, and LinkedIn paid for itself within months. They researched our audience properly, consistently expanded our follower base, and were always transparent about growth metrics and engagement. A genuine marketing partner.",
     role: "Founder & CEO",
     company: "Consumer E-commerce Brand",
     location: "UK & European Markets",
-    metric: "3.8x Return on Ad Spend",
-    service: "PPC & Organic SEO",
+    metric: "+150K New Followers",
+    service: "Follower Growth & Organic SEO",
   },
   {
     quote:
@@ -84,12 +85,12 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Restructuring our paid campaigns and conversion funnels gave us immediate clarity on acquisition costs. They eliminated wasteful ad spend and delivered a 3.8x ROAS across UK and overseas markets.",
+      "Scaling our social media followers across Facebook, Instagram, and LinkedIn gave our brand immediate authority and trust. They grew authentic, active communities that continuously drive inbound customer enquiries.",
     role: "E-Commerce Director",
     company: "Sustainable Consumer Goods",
     location: "UK & GCC Markets",
-    metric: "-42% Blended CPA",
-    service: "PPC & Data Analysis",
+    metric: "+280% Follower Surge",
+    service: "Follower Growth & Data Analysis",
   },
 ];
 
@@ -100,7 +101,7 @@ const clientMeta: {
 }[] = [
   { shortName: "UK Retail", accent: "#FF6A00", icon: Palette },
   { shortName: "Prof. Services", accent: "#00E5FF", icon: Code2 },
-  { shortName: "Consumer D2C", accent: "#F59E0B", icon: MousePointerClick },
+  { shortName: "Consumer D2C", accent: "#F59E0B", icon: UserPlus },
   { shortName: "Healthcare", accent: "#A855F7", icon: Share2 },
   { shortName: "Tech Advisory", accent: "#3B82F6", icon: Search },
   { shortName: "Sustainable Goods", accent: "#10B981", icon: BarChart3 },

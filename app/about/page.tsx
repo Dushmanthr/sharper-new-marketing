@@ -69,7 +69,7 @@ const whyPartnerPillars = [
   },
   {
     title: "Strategy and Execution Under One Roof",
-    text: "Our six core services cover brand marketing, website design and development, social media, PPC, data analysis, and organic SEO, allowing us to coordinate different marketing activities around shared business goals.",
+    text: "Our six core services cover brand marketing, website design and development, social media, social media followers increasing, data analysis, and organic SEO, allowing us to coordinate different marketing activities around shared business goals.",
     icon: Layers,
   },
   {
@@ -336,7 +336,7 @@ export default function AboutPage() {
             Partner with a <span className="text-orange-400">results-driven UK consultancy</span>
           </>
         }
-        description="Book a free consultation today to discuss your brand, search, paid media, or web objectives."
+        description="Book a free consultation today to discuss your brand, search, social follower growth, or web objectives."
       />
     </SmoothScroll>
   );

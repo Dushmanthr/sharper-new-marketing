@@ -8,6 +8,8 @@ import {
   MousePointerClick,
   BarChart3,
   Search,
+  UserPlus,
+  Users,
   ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
@@ -21,6 +23,8 @@ const iconMap: Record<string, LucideIcon> = {
   MousePointerClick,
   BarChart3,
   Search,
+  UserPlus,
+  Users,
 };
 
 // Double the items within each set so even ultra-wide displays remain fully populated

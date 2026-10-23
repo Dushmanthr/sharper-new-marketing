@@ -39,7 +39,7 @@ export default async function BlogListingPage() {
           webPageJsonLd({
             name: "Digital Marketing Insights & Strategy Guides | Sharper Labs Marketing",
             description:
-              "Explore strategic guides on brand marketing, website conversion, SEO, PPC, and data analysis designed for UK and international businesses.",
+              "Explore strategic guides on brand marketing, website conversion, SEO, social follower growth, and data analysis designed for UK and international businesses.",
             path: "/blog",
           }),
         ]}
@@ -73,7 +73,7 @@ export default async function BlogListingPage() {
                 6 Disciplines
               </span>
               <p className="mt-0.5 text-[10px] sm:text-xs font-semibold text-ink-muted">
-                SEO, PPC, Web, Brand & Data
+                SEO, Social Followers, Web, Brand & Data
               </p>
             </div>
             <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.05] p-3.5 sm:p-4 shadow-sm backdrop-blur-md transition-all hover:-translate-y-1 hover:border-orange-500/40 hover:bg-orange-500/[0.1] hover:shadow-md">

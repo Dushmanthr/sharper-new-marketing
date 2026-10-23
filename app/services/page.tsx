@@ -13,14 +13,15 @@ import { pageMeta, breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "Digital Marketing Services UK | Sharper Labs Marketing",
   description:
-    "Explore Sharper Labs Marketing's six core disciplines: Brand Marketing, Website Design & Development, Social Media Marketing, PPC, Data Analysis, and Organic SEO.",
+    "Explore Sharper Labs Marketing's six core disciplines: Brand Marketing, Website Design & Development, Social Media Marketing, Social Media Followers Increasing, Data Analysis, and Organic SEO.",
   path: "/services",
   keywords: [
     "digital marketing services UK",
     "brand marketing",
     "website design and development",
     "social media marketing",
-    "PPC agency UK",
+    "social media followers increasing UK",
+    "increase social media followers",
     "organic SEO services",
     "marketing data analysis",
   ],
@@ -35,7 +36,7 @@ export default function ServicesPage() {
           webPageJsonLd({
             name: "Digital Marketing Services | Sharper Labs Marketing",
             description:
-              "Strategy and execution under one roof: Brand Marketing, Web Design, Social Media, PPC, Data Analysis, and SEO.",
+              "Strategy and execution under one roof: Brand Marketing, Web Design, Social Media, Follower Growth, Data Analysis, and SEO.",
             path: "/services",
           }),
         ]}
@@ -53,7 +54,7 @@ export default function ServicesPage() {
           <SectionHeading
             kicker="Coordinated Discipline"
             title="Strategy and Execution Under One Roof"
-            description="Our six core services cover brand marketing, website design and development, social media, PPC, data analysis, and organic SEO. This allows us to coordinate different marketing activities around shared business goals across UK and international markets."
+            description="Our six core services cover brand marketing, website design and development, social media, social media followers increasing, data analysis, and organic SEO. This allows us to coordinate different marketing activities around shared business goals across UK and international markets."
           />
         </div>
 
@@ -64,7 +65,7 @@ export default function ServicesPage() {
 
       {/* 04. Signature Creative LED Typography Ribbon */}
       <DotMatrixRibbon
-        text="BRAND MARKETING · WEBSITE DEVELOPMENT · SOCIAL MEDIA · PPC PERFORMANCE · DATA ANALYSIS · ORGANIC SEO · UK & INTERNATIONAL · "
+        text="BRAND MARKETING · WEBSITE DEVELOPMENT · SOCIAL MEDIA · FOLLOWER GROWTH · DATA ANALYSIS · ORGANIC SEO · UK & INTERNATIONAL · "
         speed={0.9}
       />
 

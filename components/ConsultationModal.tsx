@@ -44,7 +44,7 @@ const budgetRanges = [
 const auditPriorities = [
   "Increase qualified enquiries and sales leads",
   "Improve Google search rankings (Organic SEO)",
-  "Lower Cost-Per-Acquisition on PPC & Social Ads",
+  "Rapid Social Media Follower Growth (IG, TikTok, LinkedIn, FB)",
   "Redesign website for better mobile conversion",
   "Rebrand and position for international markets",
 ];

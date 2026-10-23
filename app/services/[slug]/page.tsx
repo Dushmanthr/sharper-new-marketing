@@ -21,7 +21,10 @@ import { services, getService, site, caseStudies } from "@/lib/site";
 import { pageMeta, breadcrumbJsonLd, serviceJsonLd, faqJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return [
+    ...services.map((s) => ({ slug: s.slug })),
+    { slug: "pay-per-click" },
+  ];
 }
 
 type Params = { params: Promise<{ slug: string }> };
