@@ -6,7 +6,6 @@ import {
   Inbox,
   FileText,
   Calendar,
-  Sparkles,
   ArrowRight,
   PlusCircle,
   Clock,
@@ -169,7 +168,7 @@ export default function AdminDashboardPage() {
             {loading ? "..." : totalEnquiries}
           </p>
           <div className="mt-2 flex items-center gap-1.5 text-xs text-orange-600 font-semibold">
-            <Sparkles className="h-3.5 w-3.5" />
+            <span className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
             <span>{newEnquiriesCount} new leads awaiting review</span>
           </div>
         </div>

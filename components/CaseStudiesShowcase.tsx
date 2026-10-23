@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Building2, ShoppingBag, Stethoscope, ArrowRight } from "lucide-react";
+import { Building2, ShoppingBag, Stethoscope, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { caseStudies, type CaseStudy } from "@/lib/site";
 import CaseStudyCard from "./CaseStudyCard";
@@ -42,14 +42,14 @@ export default function CaseStudiesShowcase() {
     <div>
       {/* View Mode Switcher Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-        <div className="flex items-center gap-1.5 rounded-full border border-white/30 bg-white/70 p-1 backdrop-blur-md shadow-xs">
+        <div className="flex items-center gap-1.5 rounded-full border border-white/60 bg-white/80 p-1.5 backdrop-blur-xl shadow-md ring-1 ring-black/[0.03]">
           <button
             type="button"
             onClick={() => setViewMode("orbit")}
             className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
               viewMode === "orbit"
-                ? "bg-navy-950 text-white shadow-md"
-                : "text-navy-700 hover:text-navy-900"
+                ? "bg-navy-950 text-white shadow-md shadow-navy-950/20"
+                : "text-navy-700 hover:text-navy-950"
             }`}
           >
             <RotateCcw className="h-3.5 w-3.5 text-orange-400" />
@@ -60,8 +60,8 @@ export default function CaseStudiesShowcase() {
             onClick={() => setViewMode("grid")}
             className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
               viewMode === "grid"
-                ? "bg-navy-950 text-white shadow-md"
-                : "text-navy-700 hover:text-navy-900"
+                ? "bg-navy-950 text-white shadow-md shadow-navy-950/20"
+                : "text-navy-700 hover:text-navy-950"
             }`}
           >
             <Layers className="h-3.5 w-3.5 text-cyan-400" />
@@ -85,7 +85,7 @@ export default function CaseStudiesShowcase() {
                   className={`relative rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                     isSelected
                       ? "text-white"
-                      : "bg-white/80 text-navy-700 hover:text-navy-900 border border-navy-100 hover:border-orange-300"
+                      : "bg-white/80 text-navy-700 hover:text-navy-950 border border-white/60 shadow-xs hover:border-orange-300"
                   }`}
                 >
                   {isSelected && (
@@ -105,9 +105,16 @@ export default function CaseStudiesShowcase() {
 
       {/* Main Display: 3D Orbit Ring or Standard Grid Cards */}
       {viewMode === "orbit" ? (
-        <OrbitGallery />
+        <div className="relative">
+          {/* Ambient stage glow behind 3D orbit ring */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 sm:h-[450px] sm:w-[450px] rounded-full bg-gradient-to-tr from-orange-500/10 via-cyan-500/10 to-transparent blur-3xl"
+          />
+          <OrbitGallery />
+        </div>
       ) : (
-        <motion.div layout className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {filteredStudies.map((study, i) => (
               <motion.div

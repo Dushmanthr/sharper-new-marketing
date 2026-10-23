@@ -17,7 +17,6 @@ import {
   Loader2,
   ChevronRight,
   Bell,
-  Sparkles,
   PlusCircle,
 } from "lucide-react";
 
@@ -149,8 +148,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div>
           {/* Brand Logo & Tag */}
           <div className="flex h-16 items-center gap-2.5 border-b border-slate-100 px-6">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-navy-950 text-orange-400 font-bold shadow-xs">
-              SL
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white border border-slate-200/80 p-1 shadow-xs overflow-hidden">
+              <Image
+                src="/logo/sharper_labs_logo.png"
+                alt="Sharper Labs Logo"
+                width={36}
+                height={36}
+                priority
+                className="h-full w-full object-contain"
+              />
             </div>
             <div>
               <p className="font-display text-sm font-bold leading-tight text-navy-900">
@@ -244,8 +250,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       >
         <div className="flex h-16 items-center justify-between border-b border-slate-100 px-6">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy-900 text-orange-400 font-bold">
-              SL
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white border border-slate-200/80 p-1 shadow-xs overflow-hidden">
+              <Image
+                src="/logo/sharper_labs_logo.png"
+                alt="Sharper Labs Logo"
+                width={32}
+                height={32}
+                className="h-full w-full object-contain"
+              />
             </div>
             <span className="font-display text-sm font-bold text-navy-900">Admin Console</span>
           </div>

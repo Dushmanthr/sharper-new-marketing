@@ -50,8 +50,15 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md">
         {/* Brand Card Header */}
         <div className="mb-6 text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-orange-400 font-bold text-xl shadow-xl">
-            SL
+          <div className="mx-auto flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl bg-white/95 p-2.5 shadow-2xl shadow-orange-500/10 border border-white/40 backdrop-blur-md">
+            <Image
+              src="/logo/sharper_labs_logo.png"
+              alt="Sharper Labs Logo"
+              width={80}
+              height={80}
+              priority
+              className="h-full w-full object-contain"
+            />
           </div>
           <h1 className="mt-4 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
             Sharper Labs Marketing

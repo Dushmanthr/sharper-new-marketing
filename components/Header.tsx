@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { ChevronDown, Menu, X, Phone, Globe, Calendar, Clock, Sparkles } from "lucide-react";
+import { ChevronDown, Menu, X, Phone, Globe, Calendar, Clock } from "lucide-react";
 import { services, site, socials } from "@/lib/site";
 import Button from "./Button";
 import SocialIcon from "./SocialIcon";

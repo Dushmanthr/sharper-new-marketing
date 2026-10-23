@@ -13,7 +13,6 @@ import {
   MoveHorizontal,
   Building2,
   TrendingUp,
-  Sparkles as SparklesIcon,
 } from "lucide-react";
 
 // Expand case studies to 6 distinct gallery cards around the 360° orbit ring
