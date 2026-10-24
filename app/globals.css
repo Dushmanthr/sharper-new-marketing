@@ -53,13 +53,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  /* Lenis handles smooth momentum scrolling; keep auto for instantaneous route transitions */
+  scroll-behavior: auto;
 }
 
 body {

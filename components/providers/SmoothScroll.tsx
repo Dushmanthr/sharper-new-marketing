@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -21,8 +22,14 @@ interface SmoothScrollProps {
  */
 export default function SmoothScroll({ children }: SmoothScrollProps) {
   const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
+    // 1. Enforce manual scroll restoration
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     // Initialize Lenis with smooth momentum settings
     const lenis = new Lenis({
       duration: 1.2,
@@ -44,6 +51,14 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
     if (typeof window !== "undefined") {
       (window as any).lenis = lenis;
+    }
+
+    // Immediately snap to top on mounting this page if not an anchor link
+    if (typeof window !== "undefined" && !window.location.hash) {
+      lenis.scrollTo(0, { immediate: true });
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     }
 
     // Direct binding: when Lenis scrolls, notify ScrollTrigger
@@ -73,6 +88,19 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
+
+  // When pathname changes while provider is active
+  useEffect(() => {
+    if (typeof window !== "undefined" && !window.location.hash) {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      ScrollTrigger.refresh();
+    }
+  }, [pathname]);
 
   return <>{children}</>;
 }
