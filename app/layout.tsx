@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import ScrollToTop from "@/components/providers/ScrollToTop";
 import { site, assetUrl } from "@/lib/site";
 import { organizationJsonLd, websiteJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
@@ -74,6 +75,7 @@ export default function RootLayout({
     <html lang="en-GB" className={`${inter.variable} ${sora.variable} h-full`}>
       <head />
       <body className="min-h-full bg-white text-ink antialiased">
+        <ScrollToTop />
         <JsonLd data={[organizationJsonLd(), websiteJsonLd(), localBusinessJsonLd()]} />
         <a
           href="#main"
