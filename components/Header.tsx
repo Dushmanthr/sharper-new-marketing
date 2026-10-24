@@ -175,7 +175,7 @@ export default function Header() {
                 sizes="150px"
                 className={clsx(
                   "w-auto transition-all duration-300 group-hover:scale-[1.02]",
-                  scrolled ? "h-11 lg:h-13" : "h-14 lg:h-16",
+                  scrolled ? "h-10 sm:h-11 lg:h-13" : "h-12 sm:h-14 lg:h-16",
                 )}
               />
             </Link>
@@ -328,22 +328,37 @@ export default function Header() {
               </motion.button>
             </div>
 
-            {/* Mobile Toggle Button with Glass Finish */}
-            <button
-              type="button"
-              suppressHydrationWarning
-              className={clsx(
-                "flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-200 lg:hidden",
-                scrolled
-                  ? "bg-navy-900/5 border border-navy-200/50 text-navy-900 backdrop-blur-xs hover:bg-orange-50 hover:text-orange-600 shadow-xs"
-                  : "text-navy-900 hover:bg-navy-50",
-              )}
-              aria-label="Open menu"
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((v) => !v)}
-            >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+            {/* Mobile Actions: Book Consultation CTA + Glass Hamburger Toggle */}
+            <div className="flex items-center gap-2 sm:gap-2.5 lg:hidden">
+              <motion.button
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                type="button"
+                onClick={() => openConsultation("consultation")}
+                className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold text-white shadow-sm shadow-orange-500/25 transition-all hover:from-orange-600 hover:to-orange-700 active:scale-95"
+                aria-label="Book Consultation"
+              >
+                <Calendar className="h-3.5 w-3.5 shrink-0" />
+                <span className="xs:hidden">Book</span>
+                <span className="hidden xs:inline">Book Consultation</span>
+              </motion.button>
+
+              <button
+                type="button"
+                suppressHydrationWarning
+                className={clsx(
+                  "flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl transition-all duration-200",
+                  scrolled
+                    ? "bg-navy-900/5 border border-navy-200/50 text-navy-900 backdrop-blur-xs hover:bg-orange-50 hover:text-orange-600 shadow-xs"
+                    : "text-navy-900 hover:bg-navy-50",
+                )}
+                aria-label="Open menu"
+                aria-expanded={mobileOpen}
+                onClick={() => setMobileOpen((v) => !v)}
+              >
+                {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
           </div>
 
           {/* Dynamic Ambient Scroll Progress Bar */}
